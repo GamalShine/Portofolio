@@ -5,11 +5,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Space Explorer Portfolio</title>
+  <title>Gam's Space</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Favicon: SVG + PNG fallback (with cache-busting) -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
+  <link rel="mask-icon" href="assets/favicon.svg?v=2" color="#00c8ff">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo/logotokped.png?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/logotokped.png?v=2">
+  <link rel="shortcut icon" type="image/png" href="assets/images/logo/logotokped.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo/logotokped.png?v=2">
+  <!-- Absolute path fallback (Laragon) and generic rel for broader support -->
+  <link rel="icon" href="/Portofolio/assets/images/logo/logotokped.png?v=2">
+  <link rel="icon" href="assets/images/logo/logotokped.png?v=2">
+  <meta name="theme-color" content="#0a0e27">
 </head>
 <body>
   <div class="space-bg">
@@ -78,7 +89,7 @@
         <div class="statline">
           <div><span>Current Mission</span><strong>Information Systems</strong></div>
           <div><span>Focus</span><strong>Next.js · Laravel · React Native</strong></div>
-          <div><span>Location</span><strong>Jawa Barat · Remote/Hybrid</strong></div>
+          <div><span>Location</span><strong>Tangerang · Remote/Hybrid</strong></div>
         </div>
       </div>
       <div class="hero__avatar card">
@@ -100,23 +111,30 @@
       <div class="grid">
         <article class="card quest">
           <div class="card__header">
+            <span class="pill">System Dev</span>
             <span class="pill" style="background:var(--glow); color:#001016;">Ongoing</span>
             <span class="ping"></span>
           </div>
-          <h3>New Product — In Development</h3>
-          <p>Project terbaru yang sedang dikerjakan. Fokus ke deliver cepat, kualitas, dan pengalaman pengguna.</p>
+          <h3>Information System @ BSN</h3>
+          <p>Fokus pengembangan:
+            <br>1) Arsitektur modul & integrasi pelayanan
+            <br>2) Sistem pengelolaan data SNI & big data
+          </p>
           <div class="tags"><span>Next.js</span><span>Laravel</span><span>PostgreSQL</span></div>
-          <a class="btn btn--tiny" href="project-ongoing.php">Detail</a>
+          <a class="btn btn--tiny" href="project-bsn.php">Detail</a>
         </article>
         <article class="card quest">
           <div class="card__header">
-            <span class="pill">System Dev</span>
+            <span class="pill">QA</span>
+            <span class="pill" style="background:var(--glow); color:#001016;">Ongoing</span>
             <span class="ping"></span>
           </div>
-          <h3>Information System @ BSN</h3>
-          <p>Bangun sistem informasi untuk Badan Standardisasi Nasional (kontrak). Stack: Next.js/React + Laravel/PHP, PostgreSQL. Fokus ke kebutuhan instansi dan delivery cepat.</p>
-          <div class="tags"><span>Next.js</span><span>Laravel</span><span>PostgreSQL</span></div>
-          <a class="btn btn--tiny" href="project-bsn.php">Detail</a>
+          <h3>SISPK Testing @ BSN</h3>
+          <p>Validasi model bisnis, triage bug/error, dan masukan UI/UX.
+            Dokumentasi tersedia (screenshot ringkas).
+          </p>
+          <div class="tags"><span>Testing</span><span>UI/UX</span><span>Model Bisnis</span></div>
+          <a class="btn btn--tiny" href="project-bsn.php#sispk">Detail</a>
         </article>
         <article class="card quest">
           <div class="card__header">
@@ -128,16 +146,7 @@
           <div class="tags"><span>React Native</span><span>Android</span><span>MySQL</span></div>
           <a class="btn btn--tiny" href="project-bosgil-native.php">Detail</a>
         </article>
-        <article class="card quest">
-          <div class="card__header">
-            <span class="pill">Web</span>
-            <span class="ping"></span>
-          </div>
-          <h3>Web & SEO @ Bosgil Akademi</h3>
-          <p>Website Bosgil Akademi (WordPress) dengan materi bisnis, SEO & cloud computing, landing produk, optimasi konten.</p>
-          <div class="tags"><span>WordPress</span><span>SEO</span><span>Cloud</span></div>
-          <a class="btn btn--tiny" href="project-bosgil-akademi.php">Detail</a>
-        </article>
+        
         <article class="card quest">
           <div class="card__header">
             <span class="pill">Corp Web</span>
@@ -148,6 +157,9 @@
           <div class="tags"><span>WordPress</span><span>Web</span><span>Client Work</span></div>
           <a class="btn btn--tiny" href="project-legal-handal.php">Detail</a>
         </article>
+      </div>
+      <div class="panel__footer" style="margin-top:16px; text-align:center;">
+        <a class="btn btn--ghost" href="pages/quests.php">Selengkapnya →</a>
       </div>
     </section>
 
@@ -192,6 +204,14 @@
         <p class="lede">Urutan pengalaman yang paling relevan.</p>
       </div>
       <div class="timeline">
+        <div class="timeline__item card">
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <h4>Dashboard Bosgil Group — Mobile & Web</h4>
+            <p>React Native (Android/iOS) + Express.js + PostgreSQL, 3 role: User, Admin, Owner. Server di VPS.</p>
+            <span class="pill">Sep 2025 — Des 2025</span>
+          </div>
+        </div>
         <div class="timeline__item card">
           <div class="timeline__dot"></div>
           <div class="timeline__content">
@@ -307,7 +327,7 @@
   </main>
 
   <div class="cursor"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-QhZstjTzECszP2vCuxnxOQk4LLx7sMMEZe2qVDye3GQXffNk31DJ7tY79DbDeihdj5Z8SGvtQvECOH14R/2QRw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
   <script src="assets/js/script.js"></script>
   <script src="assets/js/mobile-nav.js"></script>
   <script src="assets/js/hud.js"></script>

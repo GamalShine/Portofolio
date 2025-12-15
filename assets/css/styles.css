@@ -492,6 +492,30 @@ main {
   box-shadow: 
     inset 0 0 50px rgba(0, 200, 255, 0.2),
     0 0 40px rgba(0, 200, 255, 0.3);
+  /* Force square container so inner absolute circles remain perfectly round */
+  width: 260px;
+  height: 260px; /* explicit height to avoid aspect-ratio fallback issues */
+  justify-self: center;
+}
+
+/* Ensure the pilot photo remains a perfect circle and never stretches */
+.hero__avatar .avatar__orb,
+.hero__avatar .avatar__orb--photo {
+  width: 180px !important;
+  height: 180px !important;
+  border-radius: 50% !important;
+  display: inline-block;
+  aspect-ratio: 1 / 1;
+  transform-origin: center center;
+}
+
+.hero__avatar .avatar__orb--photo > img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  border-radius: 50% !important;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 
 .avatar__orb {
@@ -500,7 +524,9 @@ main {
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, var(--glow), var(--accent));
   box-shadow: 0 0 50px var(--glow), inset 0 0 30px rgba(255, 255, 255, 0.3);
-  animation: pulse 3s ease-in-out infinite;
+  /* Keep the base orb static to avoid any squish; rotation handled on photo variant */
+  animation: none;
+  aspect-ratio: 1 / 1;
 }
 
 /* Circular profile image layered above the orb */
@@ -513,6 +539,7 @@ main {
   box-shadow: 0 0 20px rgba(0, 200, 255, 0.35);
   position: relative;
   z-index: 2;
+  aspect-ratio: 1 / 1;
 }
 
 /* Use the orb as a container for the profile image (so the photo is inside the circle) */
@@ -527,7 +554,9 @@ main {
   filter: saturate(1.05) contrast(1.02);
   box-shadow: 0 0 38px rgba(0, 200, 255, 0.35), inset 0 0 10px rgba(255, 255, 255, 0.15);
   z-index: 1; /* base layer for orb */
-  animation: avatarBeat 3s ease-in-out infinite;
+  /* Keep photo static; only outer dashed ring rotates */
+  animation: none;
+  aspect-ratio: 1 / 1;
 }
 
 /* Fallback <img> inside the orb */
@@ -538,7 +567,9 @@ main {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  animation: avatarBeat 3s ease-in-out infinite;
+  /* Keep image static to avoid distortion; parent rotates */
+  animation: none;
+  aspect-ratio: 1 / 1;
 }
 
 @keyframes avatarBeat {
@@ -782,7 +813,9 @@ input, textarea {
     grid-template-columns: 1fr;
   }
   .hero__avatar {
-    min-height: 260px;
+    /* Keep square on smaller screens */
+    width: 240px;
+    height: 240px;
   }
   .contact {
     grid-template-columns: 1fr;
@@ -928,5 +961,9 @@ input, textarea {
   }
   .status {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  .hero__avatar {
+    width: 220px;
+    height: 220px;
   }
 }

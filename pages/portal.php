@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="icon" type="image/jpeg" href="../assets/Foto GML.jpg">
+  <link rel="apple-touch-icon" href="../assets/Foto GML.jpg">
 </head>
 <body>
   <div class="space-bg">

@@ -9,6 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.css" />
+  <!-- Favicon: SVG + PNG fallback (with cache-busting) -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=2">
+  <link rel="mask-icon" href="../assets/favicon.svg?v=2" color="#00c8ff">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/logotokped.png?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/logotokped.png?v=2">
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logo/logotokped.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/logotokped.png?v=2">
+  <!-- Absolute path fallback (Laragon): -->
+  <link rel="icon" href="/Portofolio/assets/images/logo/logotokped.png?v=2">
 </head>
 <body>
   <div class="space-bg">
@@ -94,13 +103,62 @@
       <div class="grid">
         <article class="card quest">
           <div class="card__header">
+            <span class="pill">System Dev</span>
             <span class="pill" style="background:var(--glow); color:#001016;">Ongoing</span>
             <span class="ping"></span>
           </div>
-          <h3>New Product — In Development</h3>
-          <p>Fokus pada pengembangan fitur inti, iterasi cepat, dan kualitas pengalaman pengguna.</p>
+          <h3>Information System @ BSN</h3>
+          <p>Fokus pengembangan:
+            <br>1) Arsitektur modul & integrasi pelayanan
+            <br>2) Sistem pengelolaan data SNI & big data
+          </p>
           <div class="tags"><span>Next.js</span><span>Laravel</span><span>PostgreSQL</span></div>
-          <a class="btn btn--tiny" href="../project-ongoing.php">Detail</a>
+          <a class="btn btn--tiny" href="../project-bsn.php">Detail</a>
+        </article>
+        <article class="card quest">
+          <div class="card__header">
+            <span class="pill">QA</span>
+            <span class="pill" style="background:var(--glow); color:#001016;">Ongoing</span>
+            <span class="ping"></span>
+          </div>
+          <h3>SISPK Testing @ BSN</h3>
+          <p>Validasi model bisnis, triage bug/error, dan masukan UI/UX.
+            Lihat dokumentasi ringkas.
+          </p>
+          <div class="tags"><span>Testing</span><span>UI/UX</span><span>Model Bisnis</span></div>
+          <a class="btn btn--tiny" href="../project-bsn.php#sispk">Detail</a>
+        </article>
+        <article class="card quest">
+          <div class="card__header">
+            <span class="pill">System Dev</span>
+            <span class="ping"></span>
+          </div>
+          <h3>SNI Data Management App @ BSN</h3>
+          <p>Aplikasi internal untuk pengelolaan data SNI: desain modul, API terproteksi, dan otomasi proses.</p>
+          <div class="tags"><span>Laravel</span><span>Next.js</span><span>Data</span></div>
+          <a class="btn btn--tiny" href="../project-bsn.php">Detail</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__header">
+        <p class="eyebrow">Projects</p>
+        <h2>Dashboard Bosgil Group</h2>
+        <p class="lede">Aplikasi Android, iOS, dan Web dengan 3 role (User, Admin, Owner). Frontend React Native, backend Express.js, database PostgreSQL; server di VPS.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>Scope</h3>
+          <ul class="tags"><li>Android/iOS/Web</li><li>3 roles</li><li>VPS deployment</li></ul>
+        </article>
+        <article class="card">
+          <h3>Stack</h3>
+          <ul class="tags"><li>React Native</li><li>Express.js</li><li>PostgreSQL</li></ul>
+        </article>
+        <article class="card">
+          <h3>Links</h3>
+          <div class="tags"><a class="btn btn--tiny" href="../project-bosgil-dashboard.php">Case Study</a></div>
         </article>
       </div>
     </section>
@@ -109,16 +167,16 @@
       <div class="panel__header">
         <p class="eyebrow">Projects</p>
         <h2>Information System @ BSN</h2>
-        <p class="lede">Stack: Next.js/React + Laravel/PHP, PostgreSQL. Fokus ke kebutuhan instansi dan delivery cepat.</p>
+        <p class="lede">Stack: Next.js/React + Laravel/PHP, PostgreSQL. <span class="pill" style="margin-left:8px">Ongoing</span> Saat ini fokus pada: (1) testing aplikasi SNI (Standar Nasional Indonesia) dan (2) pengembangan sistem pengelolaan big data.</p>
       </div>
       <div class="grid">
         <article class="card">
           <h3>Scope</h3>
-          <ul class="tags"><li>Frontend SSR + caching</li><li>Laravel API + policy</li><li>Backup & monitoring</li></ul>
+          <ul class="tags"><li>Testing aplikasi SNI</li><li>Pengembangan big data</li><li>Frontend SSR + caching</li></ul>
         </article>
         <article class="card">
           <h3>Outcomes</h3>
-          <ul class="tags"><li>Reliability</li><li>Faster delivery</li><li>Documentation</li></ul>
+          <ul class="tags"><li>Reliability</li><li>Faster delivery</li><li>Big data readiness</li></ul>
         </article>
         <article class="card">
           <h3>Links</h3>
@@ -210,7 +268,7 @@
         </article>
         <article class="card">
           <h3>Links</h3>
-          <div class="tags"><span class="pill">Internal</span></div>
+          <div class="tags"><a class="btn btn--tiny" href="../project-tokopedia-qa.php">Case Study</a></div>
         </article>
       </div>
     </section>
@@ -232,7 +290,7 @@
         </article>
         <article class="card">
           <h3>Links</h3>
-          <div class="tags"><span class="pill">Internal</span></div>
+          <div class="tags"><a class="btn btn--tiny" href="../project-tokopedia-qa.php">Case Study</a></div>
         </article>
       </div>
     </section>

@@ -9,6 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.css" />
+  <!-- Favicon: SVG + PNG fallback (with cache-busting) -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=2">
+  <link rel="mask-icon" href="../assets/favicon.svg?v=2" color="#00c8ff">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/logo/logotokped.png?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/logotokped.png?v=2">
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logo/logotokped.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logo/logotokped.png?v=2">
+  <!-- Absolute path fallback (Laragon): -->
+  <link rel="icon" href="/Portofolio/assets/images/logo/logotokped.png?v=2">
 </head>
 <body>
   <div class="space-bg">

@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="icon" type="image/jpeg" href="../assets/Foto GML.jpg">
+  <link rel="apple-touch-icon" href="../assets/Foto GML.jpg">
 </head>
 <body>
   <div class="space-bg">
@@ -92,6 +94,14 @@
         <p class="lede">Detail tambahan pada setiap milestone (kegiatan, peran, tooling, dan hasil).</p>
       </div>
       <div class="timeline">
+        <div class="timeline__item card">
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <h4>Dashboard Bosgil Group — Mobile & Web</h4>
+            <p>React Native (Android/iOS) + Express.js + PostgreSQL, 3 role: User, Admin, Owner. Server di VPS.</p>
+            <span class="pill">Sep 2025 — Des 2025</span>
+          </div>
+        </div>
         <div class="timeline__item card">
           <div class="timeline__dot"></div>
           <div class="timeline__content">

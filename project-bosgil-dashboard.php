@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project • Information System @ BSN</title>
+  <title>Project • Dashboard Bosgil Group</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/Foto GML.jpg">
 </head>
 <body>
   <div class="space-bg">
@@ -68,25 +70,25 @@
       <div class="grid-bg"></div>
       <div class="hero__content card">
         <p class="eyebrow">Case Study</p>
-        <h1>Information System <span class="accent">@ BSN</span></h1>
-        <p class="lede">Sistem informasi untuk Badan Standardisasi Nasional. <span class="pill" style="margin-left:8px">Ongoing</span> Fokus pengembangan: arsitektur modul pelayanan, pengelolaan data SNI (big data), API & integrasi. Stack: Next.js/React, Laravel/PHP, PostgreSQL.</p>
+        <h1>Dashboard Bosgil Group</h1>
+        <p class="lede">Aplikasi Android, iOS, dan Web dengan 3 role (User, Admin, Owner). Frontend React Native, backend Express.js, database PostgreSQL, dan server di VPS.</p>
         <div class="hero__cta">
           <a class="btn btn--primary" href="index.php#quests">← Back to Quests</a>
           <a class="btn btn--ghost" href="index.php#contact">Contact</a>
         </div>
         <div class="statline">
-          <div><span>Role</span><strong>Fullstack / System Dev</strong></div>
-          <div><span>Stack</span><strong>Next.js · Laravel · PostgreSQL</strong></div>
-          <div><span>Focus</span><strong>Reliability · Delivery</strong></div>
+          <div><span>Role</span><strong>Fullstack & DevOps</strong></div>
+          <div><span>Stack</span><strong>React Native · Express.js · PostgreSQL</strong></div>
+          <div><span>Period</span><strong>Sep 2025 — Des 2025</strong></div>
         </div>
       </div>
       <div class="hero__avatar card">
-        <div class="avatar__orb avatar__orb--photo" style="--avatar-url: url('assets/images/logo/logobsn.png'); background-image: url('assets/images/logo/logobsn.png');">
-          <img src="assets/images/logo/logobsn.png" alt="Logo BSN" loading="lazy" />
+        <div class="avatar__orb avatar__orb--photo" style="--avatar-url: url('assets/images/logo/Logobosgil.png'); background-image: url('assets/images/logo/Logobosgil.png');">
+          <img src="assets/images/logo/Logobosgil.png" alt="Logo Bosgil Group" loading="lazy" />
         </div>
         <div class="avatar__lines"></div>
         <div class="avatar__badge">Case</div>
-        <div class="avatar__label">PROJECT: BSN</div>
+        <div class="avatar__label">PROJECT: BOSGIL DASHBOARD</div>
       </div>
     </section>
 
@@ -94,51 +96,52 @@
       <div class="panel__header">
         <p class="eyebrow">Overview</p>
         <h2>Goals & Outcomes</h2>
-        <p class="lede">Merancang modul-modul utama, menegakkan standar kualitas, dan memastikan sustain operasional.</p>
+        <p class="lede">Aplikasi lintas platform (Android, iOS, Web) untuk operasional Bosgil Group: manajemen data, peran, dan insight.</p>
       </div>
       <div class="grid">
         <article class="card">
           <h3>Objectives</h3>
           <ul class="tags">
-            <li>Pengembangan aplikasi pengelola data SNI</li>
-            <li>Integrasi modul pelayanan & kebijakan akses</li>
-            <li>Automasi pipeline data & monitoring</li>
+            <li>Autentikasi 3 role (User, Admin, Owner)</li>
+            <li>REST API Express.js</li>
+            <li>Skema PostgreSQL</li>
           </ul>
         </article>
         <article class="card">
           <h3>Outcomes</h3>
           <ul class="tags">
-            <li>Reliability meningkat</li>
-            <li>Percepatan update</li>
-            <li>Big data readiness</li>
+            <li>Operasional terpusat</li>
+            <li>Data konsisten</li>
+            <li>Deployment di VPS</li>
           </ul>
         </article>
         <article class="card">
           <h3>Highlights</h3>
           <ul class="tags">
-            <li>Frontend SSR + caching</li>
-            <li>Laravel API + policy</li>
-            <li>Backup & monitoring</li>
+            <li>React Native (Android/iOS)</li>
+            <li>Express.js service</li>
+            <li>Monitoring & backup</li>
           </ul>
         </article>
       </div>
     </section>
 
-    <section class="panel panel--alt" id="sispk">
+    <section class="panel panel--alt">
       <div class="panel__header">
-        <p class="eyebrow">Ongoing</p>
-        <h2>SISPK Testing</h2>
-        <p class="lede">Validasi model bisnis, triage bug/error, dan masukan UI/UX. Berikut dokumentasi terkini.</p>
+        <p class="eyebrow">Gallery</p>
+        <h2>Screens & Flows</h2>
+        <p class="lede">Atas permintaan pemilik hak cipta, tampilan UI tidak ditampilkan. Konten visual diganti dengan placeholder.</p>
       </div>
       <div class="grid">
-        <article class="card" style="overflow:hidden">
-          <a href="assets/images/menus/testingbsn.png" target="_blank" rel="noopener">
-            <img src="assets/images/menus/testingbsn.png" alt="Dokumentasi Testing SISPK" style="display:block;width:100%;height:auto;border-radius:8px" />
-          </a>
-          <div class="tags" style="margin-top:10px"><span>Model bisnis</span><span>Bug/Error</span><span>UI/UX</span></div>
-        </article>
-        <article class="card" style="min-height:180px"><h3>Rangkuman</h3><p>Pemetaan use case prioritas, daftar isu kritikal, dan rekomendasi perbaikan aksesibilitas.</p></article>
-        <article class="card" style="min-height:180px"><h3>Next Steps</h3><p>Uji regresi setelah perbaikan, penyempurnaan alur form, dan konsistensi komponen.</p></article>
+        <div class="card" style="min-height:180px; display:flex; align-items:center; justify-content:center; color:var(--muted);">
+          <span>UI tidak ditampilkan (copyright)</span>
+        </div>
+        <div class="card" style="min-height:180px; display:flex; align-items:center; justify-content:center; color:var(--muted);">
+          <span>UI tidak ditampilkan (copyright)</span>
+        </div>
+        <div class="card" style="min-height:180px; display:flex; align-items:center; justify-content:center; color:var(--muted);">
+          <span>UI tidak ditampilkan (copyright)</span>
+        </div>
       </div>
     </section>
   </main>

@@ -4,11 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project • Information System @ BSN</title>
+  <title>Project • QA Tester @ Tokopedia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/Foto GML.jpg">
+  <style>
+    .embed { position: relative; width: 100%; height: 72vh; border-radius: 12px; overflow: hidden; }
+    .embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #0a0f12; }
+    .note { color: var(--muted); font-size: 0.95rem; }
+  </style>
 </head>
 <body>
   <div class="space-bg">
@@ -68,78 +75,38 @@
       <div class="grid-bg"></div>
       <div class="hero__content card">
         <p class="eyebrow">Case Study</p>
-        <h1>Information System <span class="accent">@ BSN</span></h1>
-        <p class="lede">Sistem informasi untuk Badan Standardisasi Nasional. <span class="pill" style="margin-left:8px">Ongoing</span> Fokus pengembangan: arsitektur modul pelayanan, pengelolaan data SNI (big data), API & integrasi. Stack: Next.js/React, Laravel/PHP, PostgreSQL.</p>
+        <h1>QA Tester <span class="accent">@ Tokopedia</span></h1>
+        <p class="lede">Dokumentasi test scenario & test case (login flow) yang dikerjakan secara manual testing.</p>
         <div class="hero__cta">
-          <a class="btn btn--primary" href="index.php#quests">← Back to Quests</a>
-          <a class="btn btn--ghost" href="index.php#contact">Contact</a>
+          <a class="btn btn--primary" href="index.php#timeline">← Back to Timeline</a>
+          <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/u/1/d/1pk3AaxkNIIRF9dND1rqqvQDO7VJP6iXB/htmlview">Open in Google Sheets</a>
         </div>
         <div class="statline">
-          <div><span>Role</span><strong>Fullstack / System Dev</strong></div>
-          <div><span>Stack</span><strong>Next.js · Laravel · PostgreSQL</strong></div>
-          <div><span>Focus</span><strong>Reliability · Delivery</strong></div>
+          <div><span>Scope</span><strong>Manual Testing</strong></div>
+          <div><span>Focus</span><strong>Scenario & Test Case</strong></div>
+          <div><span>Period</span><strong>Nov 2023 — Des 2023</strong></div>
         </div>
       </div>
       <div class="hero__avatar card">
-        <div class="avatar__orb avatar__orb--photo" style="--avatar-url: url('assets/images/logo/logobsn.png'); background-image: url('assets/images/logo/logobsn.png');">
-          <img src="assets/images/logo/logobsn.png" alt="Logo BSN" loading="lazy" />
+        <div class="avatar__orb avatar__orb--photo" style="--avatar-url: url('assets/images/logo/logotokped.png'); background-image: url('assets/images/logo/logotokped.png');">
+          <img src="assets/images/logo/logotokped.png" alt="Tokopedia Logo" loading="lazy" />
         </div>
         <div class="avatar__lines"></div>
         <div class="avatar__badge">Case</div>
-        <div class="avatar__label">PROJECT: BSN</div>
+        <div class="avatar__label">PROJECT: QA</div>
       </div>
     </section>
 
     <section class="panel">
       <div class="panel__header">
-        <p class="eyebrow">Overview</p>
-        <h2>Goals & Outcomes</h2>
-        <p class="lede">Merancang modul-modul utama, menegakkan standar kualitas, dan memastikan sustain operasional.</p>
+        <p class="eyebrow">Artifact</p>
+        <h2>Test Scenario & Test Case</h2>
+        <p class="lede">Embed Google Sheets (read-only). Jika embed diblokir, gunakan tombol di atas untuk membuka langsung.</p>
       </div>
-      <div class="grid">
-        <article class="card">
-          <h3>Objectives</h3>
-          <ul class="tags">
-            <li>Pengembangan aplikasi pengelola data SNI</li>
-            <li>Integrasi modul pelayanan & kebijakan akses</li>
-            <li>Automasi pipeline data & monitoring</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Outcomes</h3>
-          <ul class="tags">
-            <li>Reliability meningkat</li>
-            <li>Percepatan update</li>
-            <li>Big data readiness</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Highlights</h3>
-          <ul class="tags">
-            <li>Frontend SSR + caching</li>
-            <li>Laravel API + policy</li>
-            <li>Backup & monitoring</li>
-          </ul>
-        </article>
+      <div class="card embed">
+        <iframe title="Tokopedia QA Test Cases" src="https://docs.google.com/spreadsheets/u/1/d/1pk3AaxkNIIRF9dND1rqqvQDO7VJP6iXB/htmlview"></iframe>
       </div>
-    </section>
-
-    <section class="panel panel--alt" id="sispk">
-      <div class="panel__header">
-        <p class="eyebrow">Ongoing</p>
-        <h2>SISPK Testing</h2>
-        <p class="lede">Validasi model bisnis, triage bug/error, dan masukan UI/UX. Berikut dokumentasi terkini.</p>
-      </div>
-      <div class="grid">
-        <article class="card" style="overflow:hidden">
-          <a href="assets/images/menus/testingbsn.png" target="_blank" rel="noopener">
-            <img src="assets/images/menus/testingbsn.png" alt="Dokumentasi Testing SISPK" style="display:block;width:100%;height:auto;border-radius:8px" />
-          </a>
-          <div class="tags" style="margin-top:10px"><span>Model bisnis</span><span>Bug/Error</span><span>UI/UX</span></div>
-        </article>
-        <article class="card" style="min-height:180px"><h3>Rangkuman</h3><p>Pemetaan use case prioritas, daftar isu kritikal, dan rekomendasi perbaikan aksesibilitas.</p></article>
-        <article class="card" style="min-height:180px"><h3>Next Steps</h3><p>Uji regresi setelah perbaikan, penyempurnaan alur form, dan konsistensi komponen.</p></article>
-      </div>
+      <p class="note">Catatan: Beberapa browser/extension mungkin memblokir embed dari Google Docs. Gunakan tombol "Open in Google Sheets" jika iframe tidak tampil.</p>
     </section>
   </main>
 
