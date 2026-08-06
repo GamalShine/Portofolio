@@ -147,9 +147,41 @@
   const contactForm = document.querySelector(".contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      
       const nameInput = contactForm.querySelector("#name");
       const name = nameInput ? nameInput.value : "Teman";
-      showToast(`Terima kasih ${name}, pesan Anda berhasil dikirim!`);
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      
+      // Update button state
+      submitBtn.innerHTML = 'Mengirim... <i class="ph ph-spinner ph-spin" style="margin-left: 6px;"></i>';
+      submitBtn.disabled = true;
+
+      const formData = new FormData(contactForm);
+      formData.append('ajax_contact', '1');
+
+      fetch(window.location.href, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        showToast(`Terima kasih ${name}, pesan Anda berhasil dikirim!`);
+        contactForm.reset();
+      })
+      .catch(error => {
+        // Fallback if JSON fails but request might have succeeded locally
+        showToast(`Terima kasih ${name}, pesan Anda diproses.`);
+        contactForm.reset();
+      })
+      .finally(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      });
     });
   }
 

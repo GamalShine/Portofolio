@@ -1,8 +1,32 @@
 <?php
 require_once __DIR__ . '/includes/i18n.php';
-?><!DOCTYPE html>
-<html lang="<?= $current_lang ?>">
 
+// Handle AJAX Contact Form Submission
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ajax_contact'])) {
+    header('Content-Type: application/json');
+    $name = htmlspecialchars($_POST["name"] ?? "Teman");
+    $email = filter_var($_POST["email"] ?? "", FILTER_SANITIZE_EMAIL);
+    $message = htmlspecialchars($_POST["message"] ?? "");
+    
+    // Ganti email ini dengan email asli Anda jika sudah di hosting
+    $to = "gamalmusthofa@gmail.com"; 
+    $subject = "Pesan Baru dari Portfolio Web: $name";
+    
+    $headers = "From: noreply@gamalmusthofa.com\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    
+    $body = "Nama: $name\nEmail: $email\n\nPesan:\n$message";
+    
+    // Fungsi mail() mungkin tidak jalan di localhost (Laragon) tanpa konfigurasi SMTP
+    // Tapi akan jalan normal saat website di-upload ke hosting (cPanel/VPS)
+    @mail($to, $subject, $body, $headers);
+    
+    echo json_encode(["status" => "success", "message" => "Terkirim"]);
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="<?= $current_lang ?>">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -520,13 +544,6 @@ require_once __DIR__ . '/includes/i18n.php';
               placeholder="<?= __('form_msg_ph') ?>" required></textarea>
           </div>
           <button type="submit" class="btn btn--primary btn--full"><?= __('form_submit') ?> <i class="ph ph-paper-plane-right" style="margin-left: 6px;"></i></button>
-
-          <?php if ($_SERVER["REQUEST_METHOD"] === "POST"): ?>
-            <div
-              style="padding: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--accent-emerald); border-radius: var(--radius-sm); color: var(--badge-live-text); font-weight: 600; text-align: center;">
-              Terima kasih, <?= htmlspecialchars($_POST["name"] ?? "Anda") ?>! Pesan Anda telah diterima.
-            </div>
-          <?php endif; ?>
         </form>
       </div>
     </section>
