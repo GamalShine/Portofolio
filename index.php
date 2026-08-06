@@ -58,6 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ajax_contact'])) {
         <a href="#work"><?= __('nav_work') ?></a>
         <a href="#about"><?= __('nav_about') ?></a>
         <a href="#experience"><?= __('nav_experience') ?></a>
+        <a href="#education"><?= __('nav_education') ?></a>
+        <a href="#certifications"><?= __('nav_certifications') ?></a>
         <a class="nav-cta" href="#contact"><?= __('nav_contact') ?></a>
       </nav>
       <div class="header-actions">

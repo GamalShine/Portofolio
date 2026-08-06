@@ -4,15 +4,17 @@ return [
     'nav_work' => 'Work',
     'nav_about' => 'About',
     'nav_experience' => 'Experience',
+    'nav_education' => 'Education',
+    'nav_certifications' => 'Certifications',
     'nav_contact' => 'Contact Me',
-    
+
     // Hero
     'hero_status' => 'Open to Work',
     'hero_role' => 'System · Web · Mobile Developer',
     'hero_bio' => 'A Bachelor of Information Systems with 2 years of experience in software and IT development. Possessing strong skills in system and data analysis, system design, teamwork, time management, problem-solving, and execution.',
     'hero_cta' => 'View Work',
     'hero_contact_via' => 'Connect via',
-    
+
     // Work Section
     'work_eyebrow' => 'PORTFOLIO SHOWCASE',
     'work_title' => 'Selected Projects & Case Studies',
@@ -20,77 +22,77 @@ return [
     'filter_fullstack' => 'Fullstack & Web',
     'filter_mobile' => 'Mobile App',
     'filter_qa' => 'QA & Testing',
-    
+
     // Projects Descriptions
     'proj_bsn_title' => 'Information System @ BSN',
     'proj_bsn_desc' => 'Government agency information systems: public service module architecture, API integrations, and large-scale SNI data processing.',
-    
+
     'proj_erp_title' => 'ERP System @ CV Makanan Segala Acara',
     'proj_erp_desc' => 'Cross-platform ERP application: Android, iOS, and Web Dashboard with 3 access roles (User, Admin, Owner). Express.js & MySQL backend, deployed to 268 employees across branches.',
-    
+
     'proj_order_title' => 'Order Management System @ CV Makanan Segala Acara',
     'proj_order_desc' => 'Multi-branch restaurant order management app using React Native. Admin training & MySQL database integration.',
-    
+
     'proj_qa_title' => 'Automation Testing Project (Tokopedia)',
     'proj_qa_desc' => 'Creation of test scenarios, test cases, and automation testing for the login & registration authentication modules of an e-commerce website.',
-    
+
     'proj_akademi_title' => 'Military Academy Website & SEO @ Bosgil Akademi',
     'proj_akademi_desc' => 'Developed an information and registration website for a military academy. Built with one other programmer using WordPress with Google SEO optimization.',
-    
+
     'proj_legal_title' => 'Company Profile @ PT Legal Handal Sejahtera',
     'proj_legal_desc' => 'Modern WordPress-based company profile website for a legal business. Responsive UI design & rapid deployment.',
-    
+
     'proj_ecommerce_title' => 'Construction Tools E-Commerce @ PT Mandiri Jaya Top',
     'proj_ecommerce_desc' => 'Internship project building an e-commerce website for construction tools. Developed alongside 2 programmers using CodeIgniter & MySQL.',
-    
+
     'link_case_study' => 'View Full Case Study',
     'link_qa_detail' => 'View Testing Details',
-    
+
     // About Section
     'about_eyebrow' => 'About Me',
     'about_philosophy_title' => 'Engineering Philosophy & Approach',
     'about_philosophy_1' => 'I am a Software Engineer experienced in building government information systems, multi-branch mobile applications, and business-scale websites.',
     'about_philosophy_2' => 'My background in QA & helpdesk provides me with heightened sensitivity to potential bugs, edge-case user flows, and effective stakeholder communication. My current primary focus is <strong>Fullstack Development</strong> — from architecting modules and integrating REST APIs, to ensuring reliable deployment on VPS/Cloud environments.',
-    
+
     'about_metrics_title' => 'So Far',
     'metric_years' => 'Years working',
     'metric_projects' => 'Projects done',
     'metric_delivery' => 'Deliver on time',
-    
+
     'about_tech_title' => 'Tech Stack & Capability Matrix',
     'tech_frontend' => 'Frontend & Web',
     'tech_mobile' => 'Mobile Development',
     'tech_backend' => 'Backend & Database',
     'tech_devops' => 'DevOps & Testing & Tools',
-    
+
     // Experience Section
     'exp_eyebrow' => 'CAREER TIMELINE',
     'exp_title' => 'Work Experience & Projects',
-    
+
     'exp_bsn_desc' => 'Designed and developed government service information system modules using Next.js/React, Laravel, and PostgreSQL. Managed API integrations and large-scale SNI data architecture.',
-    
+
     'exp_erp_desc' => 'Built a cross-platform ERP app (Android, iOS, Website) with a unified Express.js API and MySQL. Deployed to 268 employees across branches, handling 3 authorization levels (User, Admin, Owner).',
-    
+
     'exp_order_desc' => 'Developed a multi-branch restaurant order management system. Managed MySQL integration, conducted branch admin training, and led remote developer coordination.',
-    
+
     'exp_pln_desc' => 'Conducted triage on user issues, analyzed technical constraints, and coordinated effectively with the engineering team for high SLA problem resolution.',
-    
+
     'exp_qa_desc' => 'Drafted test scenarios, test cases, and automation testing scripts for the login authentication feature on the Tokopedia website (as a QA case study and system validation).',
-    
+
     'exp_legal_desc' => 'Rapidly and precisely developed a modern WordPress company profile tailored to the client\'s legal business requirements.',
-    
+
     'exp_intern_desc' => 'Built an inventory and sales transaction information system based on CodeIgniter & MySQL to improve operational efficiency.',
-    
+
     // Contact Section
     'contact_eyebrow' => 'LET\'S CONNECT',
     'contact_title' => 'Contact Me',
     'contact_desc' => 'I am always open to collaboration opportunities, whether for full-time positions or project development. Please leave a message via the form below.',
-    
+
     'contact_loc_label' => 'Location',
     'contact_loc_val' => 'Tangerang · Remote / Hybrid',
     'contact_avail_label' => 'Availability',
     'contact_avail_val' => 'Open for New Opportunities',
-    
+
     'form_name_label' => 'Full Name',
     'form_name_ph' => 'What is your name?',
     'form_email_label' => 'Email Address',
@@ -98,7 +100,7 @@ return [
     'form_msg_label' => 'Message / Project Brief',
     'form_msg_ph' => 'Briefly describe your project plan or the position offered...',
     'form_submit' => 'Send Message',
-    
+
     'footer_text' => 'Gamal Musthofa. All rights reserved.',
     'footer_back_top' => 'Back to top',
 
@@ -306,7 +308,7 @@ return [
     'edu_stikom_name' => 'Institut Teknologi & Bisnis STIKOM Bali',
     'edu_stikom_loc' => 'Jl. Raya Puputan, Bali',
     'edu_stikom_major' => 'Student Exchange — Computer Systems',
-    'edu_stikom_gpa' => 'GPA 3.80 / 4.00',
+    'edu_stikom_gpa' => 'GPA 3.90 / 4.00',
     'edu_stikom_period' => 'Sep 2022 — Feb 2023',
     'edu_view_transcript' => 'View Transcript & Degree',
 
@@ -331,13 +333,13 @@ return [
     // Education Detail Page
     'edu_page_title_unpam' => 'Transcript & Degree — Universitas Pamulang — Gamal Musthofa',
     'edu_page_title_stikom' => 'Transcript — STIKOM Bali (PMM) — Gamal Musthofa',
-    'edu_detail_back' => '← Back to Portfolio',
+    'edu_detail_back' => 'Back to Portfolio',
     'edu_detail_transcript_label' => 'Academic Documents',
     'edu_detail_transcript_desc_unpam' => 'Official academic transcript and degree from Universitas Pamulang for the Information Systems study program. This document reflects 4 years of study with a GPA of 3.83.',
     'edu_detail_transcript_desc_stikom' => 'Academic transcript (KHS) from Institut Teknologi & Bisnis STIKOM Bali during the National Student Exchange Program (PMM). Period: Sep 2022 — Feb 2023.',
 
     // Certifications Detail Page
-    'cert_detail_back' => '← Back to Portfolio',
+    'cert_detail_back' => 'Back to Portfolio',
     'cert_detail_label' => 'Certificate Document',
     'cert_detail_bnsp_desc' => 'A professional programmer competency certificate issued by the National Professional Certification Agency (BNSP) of Indonesia. This certificate proves technically verified and nationally recognized programming competency.',
     'cert_detail_maganghub_desc' => 'Certificate of completion for the internship program at the National Standardization Agency (BSN) through the MagangHub platform, managed by the Ministry of Manpower RI.',

@@ -336,6 +336,8 @@ if ($school === 'unpam') {
         <a href="index.php#work"><?= __('nav_work') ?></a>
         <a href="index.php#about"><?= __('nav_about') ?></a>
         <a href="index.php#experience"><?= __('nav_experience') ?></a>
+        <a href="index.php#education"><?= __('nav_education') ?></a>
+        <a href="index.php#certifications"><?= __('nav_certifications') ?></a>
         <a class="nav-cta" href="index.php#contact"><?= __('nav_contact') ?></a>
       </nav>
       <div class="header-actions">
@@ -399,11 +401,17 @@ if ($school === 'unpam') {
           <p class="edu-doc-desc"><?= $docDesc ?></p>
 
           <?php if (file_exists($pdfFile)): ?>
-            <iframe
-              src="<?= htmlspecialchars($pdfFile) ?>#toolbar=0&navpanes=0"
-              class="edu-pdf-viewer"
-              title="<?= htmlspecialchars($schoolName) ?> Document"
-            ></iframe>
+            <div style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-card); background: var(--bg-card); overflow: hidden;">
+              <object
+                data="<?= htmlspecialchars($pdfFile) ?>#toolbar=0&navpanes=0&view=Fit&scrollbar=0"
+                type="application/pdf"
+                class="edu-pdf-viewer"
+                style="border: none; border-radius: 0; box-shadow: none;"
+                title="<?= htmlspecialchars($schoolName) ?> Document"
+              >
+                <iframe src="<?= htmlspecialchars($pdfFile) ?>#toolbar=0&navpanes=0&view=Fit&scrollbar=0" class="edu-pdf-viewer" style="border: none; border-radius: 0; box-shadow: none;"></iframe>
+              </object>
+            </div>
           <?php else: ?>
             <div class="edu-pdf-fallback">
               <i class="ph ph-file-pdf" style="font-size: 3rem; color: var(--accent-primary); margin-bottom: 12px; display: block;"></i>

@@ -30,6 +30,8 @@ $root = $root ?? '';
         <a href="<?= $root ?>index.php#work"><?= __('nav_work') ?></a>
         <a href="<?= $root ?>index.php#about"><?= __('nav_about') ?></a>
         <a href="<?= $root ?>index.php#experience"><?= __('nav_experience') ?></a>
+        <a href="<?= $root ?>index.php#education"><?= __('nav_education') ?></a>
+        <a href="<?= $root ?>index.php#certifications"><?= __('nav_certifications') ?></a>
         <a class="nav-cta" href="<?= $root ?>index.php#contact"><?= __('nav_contact') ?></a>
       </nav>
       <div class="header-actions">

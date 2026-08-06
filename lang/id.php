@@ -4,15 +4,17 @@ return [
     'nav_work' => 'Karya',
     'nav_about' => 'Tentang',
     'nav_experience' => 'Pengalaman',
+    'nav_education' => 'Pendidikan',
+    'nav_certifications' => 'Sertifikasi',
     'nav_contact' => 'Hubungi Saya',
-    
+
     // Hero
     'hero_status' => 'Open to Work',
     'hero_role' => 'System · Web · Mobile Developer',
     'hero_bio' => 'Lulusan Sarjana Sistem Informasi dengan pengalaman 2 Tahun dalam pengembangan perangkat lunak dan teknologi informasi. Memiliki kemampuan analisa sistem, analisa data, perancangan sistem, kerja sama tim, manajemen waktu, pemecahan masalah, dan eksekusi.',
     'hero_cta' => 'Lihat Karya',
     'hero_contact_via' => 'Hubungi saya via',
-    
+
     // Work Section
     'work_eyebrow' => 'PORTFOLIO SHOWCASE',
     'work_title' => 'Proyek Pilihan & Case Studies',
@@ -20,77 +22,77 @@ return [
     'filter_fullstack' => 'Fullstack & Web',
     'filter_mobile' => 'Mobile App',
     'filter_qa' => 'QA & Testing',
-    
+
     // Projects Descriptions
     'proj_bsn_title' => 'Information System @ BSN',
     'proj_bsn_desc' => 'Sistem informasi instansi pemerintah: arsitektur modul pelayanan publik, integrasi API, dan pengolahan data SNI skala besar.',
-    
+
     'proj_erp_title' => 'ERP System @ CV Makanan Segala Acara',
     'proj_erp_desc' => 'Aplikasi ERP lintas platform: Android, iOS, dan Web Dashboard dengan 3 role akses (User, Admin, Owner). Backend Express.js & MySQL, deploy ke 268 pegawai seluruh cabang.',
-    
+
     'proj_order_title' => 'Order Management System @ CV Makanan Segala Acara',
     'proj_order_desc' => 'Aplikasi manajemen pesanan restoran multi-cabang berbasis React Native. Pelatihan admin cabang & integrasi database MySQL.',
-    
+
     'proj_qa_title' => 'Automation Testing Project (Tokopedia)',
     'proj_qa_desc' => 'Pembuatan test scenario, test case, dan automation testing untuk modul autentikasi login & registrasi web e-commerce.',
-    
+
     'proj_akademi_title' => 'Military Academy Website & SEO @ Bosgil Akademi',
     'proj_akademi_desc' => 'Mengembangkan website informasi dan pendaftaran untuk akademi militer dari CV Makanan Segala Acara. Dibangun bersama 1 programmer lain menggunakan WordPress dengan optimasi Google SEO.',
-    
+
     'proj_legal_title' => 'Company Profile @ PT Legal Handal Sejahtera',
     'proj_legal_desc' => 'Website company profile modern berbasis WordPress untuk legalitas usaha. Perancangan UI responsive & rilis cepat.',
-    
+
     'proj_ecommerce_title' => 'E-Commerce Alat Konstruksi @ PT Mandiri Jaya Top',
     'proj_ecommerce_desc' => 'Proyek Kerja Praktek membangun website e-commerce penjualan alat konstruksi. Dikembangkan bersama 2 programmer menggunakan CodeIgniter & MySQL.',
-    
+
     'link_case_study' => 'Lihat Case Study Lengkap',
     'link_qa_detail' => 'Lihat Detail Testing',
-    
+
     // About Section
     'about_eyebrow' => 'Tentang Saya',
     'about_philosophy_title' => 'Filosofi & Pendekatan Engineering',
     'about_philosophy_1' => 'Saya adalah seorang Software Engineer yang berpengalaman dalam membangun sistem informasi instansi, aplikasi mobile multi-cabang, hingga website skala bisnis.',
     'about_philosophy_2' => 'Berpengalaman di bidang QA & helpdesk memberi saya kepekaan ekstra terhadap potensi bug, alur user (UX edge cases), serta efisiensi komunikasi antar stakeholder. Fokus utama saya saat ini adalah <strong>Fullstack Development</strong> — merancang modul dari perancangan arsitektur, integrasi REST API, hingga deployment handal di VPS/Cloud.',
-    
+
     'about_metrics_title' => 'Sejauh ini',
     'metric_years' => 'Tahun kerja',
     'metric_projects' => 'Proyek selesai',
     'metric_delivery' => 'Deliver on time',
-    
+
     'about_tech_title' => 'Tech Stack & Capability Matrix',
     'tech_frontend' => 'Frontend & Web',
     'tech_mobile' => 'Mobile Development',
     'tech_backend' => 'Backend & Database',
     'tech_devops' => 'DevOps & Testing & Tools',
-    
+
     // Experience Section
     'exp_eyebrow' => 'CAREER TIMELINE',
     'exp_title' => 'Pengalaman Kerja & Proyek',
-    
+
     'exp_bsn_desc' => 'Merancang dan mengembangkan modul sistem informasi pelayanan instansi menggunakan Next.js/React, Laravel, dan PostgreSQL. Mengelola integrasi API dan arsitektur big data SNI.',
-    
+
     'exp_erp_desc' => 'Membangun aplikasi ERP lintas platform (Android, iOS, Website) dengan 1 API Express.js terintegrasi dan MySQL. Deploy ke 268 pegawai seluruh cabang, menangani 3 level otorisasi akses (User, Admin, Owner).',
-    
+
     'exp_order_desc' => 'Mengembangkan sistem manajemen pesanan restoran multi-cabang. Mengelola integrasi database MySQL, melakukan pelatihan admin cabang, serta memimpin koordinasi tim pengembang remote.',
-    
+
     'exp_pln_desc' => 'Melakukan triase laporan isu pengguna, analisis kendala teknis, dan koordinasi efektif dengan tim engineering untuk penyelesaian masalah dengan SLA tinggi.',
-    
+
     'exp_qa_desc' => 'Menyusun test scenario, test case, dan script automation testing untuk fitur autentikasi login pada website Tokopedia (sebagai studi kasus QA dan validasi sistem).',
-    
+
     'exp_legal_desc' => 'Mengembangkan company profile WordPress modern secara cepat dan presisi sesuai kebutuhan bisnis legalitas usaha klien.',
-    
+
     'exp_intern_desc' => 'Membangun sistem informasi inventaris dan transaksi penjualan berbasis CodeIgniter & MySQL untuk meningkatkan efisiensi operasional.',
-    
+
     // Contact Section
     'contact_eyebrow' => 'LET\'S CONNECT',
     'contact_title' => 'Hubungi Saya',
     'contact_desc' => 'Saya senantiasa terbuka untuk peluang kerja sama, baik itu posisi full-time maupun pengembangan proyek. Silakan tinggalkan pesan melalui formulir di bawah ini.',
-    
+
     'contact_loc_label' => 'Lokasi',
     'contact_loc_val' => 'Tangerang · Remote / Hybrid',
     'contact_avail_label' => 'Availability',
     'contact_avail_val' => 'Open for New Opportunities',
-    
+
     'form_name_label' => 'Nama Lengkap',
     'form_name_ph' => 'Siapa nama Anda?',
     'form_email_label' => 'Alamat Email',
@@ -98,7 +100,7 @@ return [
     'form_msg_label' => 'Pesan / Brief Proyek',
     'form_msg_ph' => 'Ceritakan singkat rencana proyek atau posisi yang ditawarkan...',
     'form_submit' => 'Kirim Pesan',
-    
+
     'footer_text' => 'Gamal Musthofa. All rights reserved.',
     'footer_back_top' => 'Kembali ke atas',
 
@@ -306,7 +308,7 @@ return [
     'edu_stikom_name' => 'Institut Teknologi & Bisnis STIKOM Bali',
     'edu_stikom_loc' => 'Jl. Raya Puputan, Bali',
     'edu_stikom_major' => 'Pertukaran Mahasiswa — Sistem Komputer',
-    'edu_stikom_gpa' => 'IPK 3.80 / 4.00',
+    'edu_stikom_gpa' => 'IPK 3.90 / 4.00',
     'edu_stikom_period' => 'Sep 2022 — Feb 2023',
     'edu_view_transcript' => 'Lihat Transkrip & Ijazah',
 
@@ -331,13 +333,13 @@ return [
     // Education Detail Page
     'edu_page_title_unpam' => 'Transkrip & Ijazah — Universitas Pamulang — Gamal Musthofa',
     'edu_page_title_stikom' => 'Transkrip — STIKOM Bali (PMM) — Gamal Musthofa',
-    'edu_detail_back' => '← Kembali ke Portfolio',
+    'edu_detail_back' => 'Kembali ke Portfolio',
     'edu_detail_transcript_label' => 'Dokumen Akademik',
     'edu_detail_transcript_desc_unpam' => 'Transkrip nilai resmi dan ijazah dari Universitas Pamulang untuk program studi Sistem Informasi. Dokumen ini mencerminkan hasil studi selama 4 tahun dengan IPK 3.83.',
     'edu_detail_transcript_desc_stikom' => 'Kartu Hasil Studi (KHS) dari Institut Teknologi & Bisnis STIKOM Bali selama mengikuti program Pertukaran Mahasiswa Merdeka (PMM). Periode: Sep 2022 — Feb 2023.',
 
     // Certifications Detail Page
-    'cert_detail_back' => '← Kembali ke Portfolio',
+    'cert_detail_back' => 'Kembali ke Portfolio',
     'cert_detail_label' => 'Dokumen Sertifikat',
     'cert_detail_bnsp_desc' => 'Sertifikat kompetensi profesi Programmer yang dikeluarkan oleh Badan Nasional Sertifikasi Profesi (BNSP) Republik Indonesia. Sertifikat ini membuktikan kompetensi teknis sebagai Programmer yang telah diuji dan diakui secara nasional.',
     'cert_detail_maganghub_desc' => 'Sertifikat penyelesaian program Magang di Badan Standarisasi Nasional (BSN) melalui platform MagangHub yang dikelola oleh Kementerian Ketenagakerjaan RI.',

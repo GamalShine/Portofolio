@@ -294,6 +294,8 @@ $pageTitle = $showAll
         <a href="index.php#work"><?= __('nav_work') ?></a>
         <a href="index.php#about"><?= __('nav_about') ?></a>
         <a href="index.php#experience"><?= __('nav_experience') ?></a>
+        <a href="index.php#education"><?= __('nav_education') ?></a>
+        <a href="index.php#certifications"><?= __('nav_certifications') ?></a>
         <a class="nav-cta" href="index.php#contact"><?= __('nav_contact') ?></a>
       </nav>
       <div class="header-actions">
@@ -378,11 +380,17 @@ $pageTitle = $showAll
           <p class="cert-doc-desc"><?= $activeCert['desc'] ?></p>
 
           <?php if (file_exists($activeCert['file'])): ?>
-            <iframe
-              src="<?= htmlspecialchars($activeCert['file']) ?>#toolbar=0&navpanes=0"
-              class="cert-pdf-viewer"
-              title="<?= htmlspecialchars($activeCert['title']) ?>"
-            ></iframe>
+            <div style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-card); background: var(--bg-card); overflow: hidden;">
+              <object
+                data="<?= htmlspecialchars($activeCert['file']) ?>#toolbar=0&navpanes=0&view=Fit&scrollbar=0"
+                type="application/pdf"
+                class="cert-pdf-viewer"
+                style="border: none; border-radius: 0; box-shadow: none;"
+                title="<?= htmlspecialchars($activeCert['title']) ?>"
+              >
+                <iframe src="<?= htmlspecialchars($activeCert['file']) ?>#toolbar=0&navpanes=0&view=Fit&scrollbar=0" class="cert-pdf-viewer" style="border: none; border-radius: 0; box-shadow: none;"></iframe>
+              </object>
+            </div>
             <div style="margin-top: 16px; display: flex; gap: 12px; justify-content: flex-end;">
               <a href="certifications.php<?= $current_lang !== 'id' ? '?lang='.$current_lang : '' ?>" class="btn btn--ghost">
                 <i class="ph ph-list"></i> <?= __('cert_view_all') ?>
