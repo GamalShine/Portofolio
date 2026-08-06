@@ -1,153 +1,177 @@
-<?php ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project • Inventory & Sales @ PT Mandiri Jaya Top</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css" />
-</head>
-<body>
-  <div class="space-bg">
-    <div class="nebula nebula-1"></div>
-    <div class="nebula nebula-2"></div>
-    <div class="planet"></div>
-  </div>
-  <canvas id="starfield"></canvas>
+<?php
+$pageTitle = 'E-Commerce Alat Konstruksi @ PT Mandiri Jaya Top — Gamal Musthofa';
+include 'includes/header.php';
+?>
+<style>
+  /* ── Mandiri Jaya Top Detail Page Extras ── */
+  .mjt-section {
+    margin-bottom: 48px;
+  }
+  .mjt-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mjt-lead {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 75ch;
+    margin-bottom: 24px;
+  }
+  .mjt-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .mjt-card {
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+  }
+  .mjt-card h3 {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    margin-bottom: 12px;
+  }
+  .mjt-card ul {
+    display: grid;
+    gap: 10px;
+  }
+  .mjt-card li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .mjt-card li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+  }
+  
+  .gallery-label {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .gallery-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+  }
+  .mjt-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .mjt-gallery a {
+    display: block;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s var(--ease-out);
+  }
+  .mjt-gallery a:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+  }
+  .mjt-gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s var(--ease-out);
+  }
+  .mjt-gallery a:hover img {
+    transform: scale(1.05);
+  }
+</style>
 
-  <header class="hud">
-    <div class="brand">
-      <div class="brand__icon">◉</div>
+<main class="detail-page">
+  <div class="container">
+    <a class="back-link" href="index.php#work"><?= __('back_to_work') ?></a>
+
+    <header class="detail-hero">
       <div>
-        <div class="brand__title">Gam's Space</div>
-        <div class="brand__subtitle">PROJECT.MISSION</div>
+        <p class="eyebrow"><span class="eyebrow__num">Kerja Praktek</span> Jan 2022 — Mei 2022</p>
+        <h1><?= __('mjt_page_title') ?></h1>
+        <p class="detail-lead">
+          <?= __('mjt_hero_lead') ?>
+        </p>
+        <ul class="hero__meta">
+          <li><span><?= __('meta_role') ?></span><strong>Fullstack Developer</strong></li>
+          <li><span><?= __('meta_stack') ?></span><strong>CodeIgniter · MySQL</strong></li>
+          <li><span><?= __('meta_team') ?></span><strong>3 Programmer (Kerja Praktek)</strong></li>
+          <li><span><?= __('meta_period') ?></span><strong>Jan 2022 — Mei 2022</strong></li>
+        </ul>
       </div>
-    </div>
-    <button class="nav__toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="nav__toggle-line"></span>
-      <span class="nav__toggle-line"></span>
-      <span class="nav__toggle-line"></span>
-    </button>
-    <nav class="nav" id="primary-nav">
-      <a class="nav__btn" href="index.php#hero">Home</a>
-      <a class="nav__btn" href="index.php#quests">Quests</a>
-      <a class="nav__btn" href="index.php#skills">Skills</a>
-      <a class="nav__btn" href="index.php#timeline">Log</a>
-      <a class="nav__btn" href="index.php#contact">Portal</a>
-    </nav>
-    <div class="status status--compact">
-      <button class="status__pill" aria-expanded="false" aria-haspopup="true" aria-controls="status-dropdown">
-        <span class="status__level">Lv <strong id="lvl">07</strong></span>
-        <span class="status__dot"></span>
-        <span class="status__xp">XP <span id="xp-perc">86%</span></span>
-        <span class="status__dot"></span>
-        <span class="status__energy">EN <span id="en-perc">74%</span></span>
-      </button>
-      <div class="status__dropdown" id="status-dropdown" hidden>
-        <div class="status__item">
-          <span>Level</span>
-          <strong id="lvl-readonly">07</strong>
-        </div>
-        <div class="status__item">
-          <span>XP</span>
-          <div class="bar"><span id="xp-bar"></span></div>
-        </div>
-        <div class="status__item">
-          <span>Energy</span>
-          <div class="bar bar--alt"><span id="energy-bar"></span></div>
-        </div>
+      <div class="detail-hero__img">
+        <img src="assets/images/logo/logoptmandirijayatop.png" alt="Logo PT Mandiri Jaya Top" loading="lazy">
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="panel panel--hero">
-      <div class="grid-bg"></div>
-      <div class="hero__content card">
-        <p class="eyebrow">Case Study</p>
-        <h1>Inventory & Sales <span class="accent">@ PT Mandiri Jaya Top</span></h1>
-        <p class="lede">Aplikasi web inventory & penjualan berbasis CodeIgniter + MySQL. Fokus pada CRUD data, laporan penjualan, dan alur operasional ringan untuk tim kecil (on-site).</p>
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="index.php#quests">← Back to Quests</a>
-          <a class="btn btn--ghost" href="index.php#contact">Contact</a>
-        </div>
-        <div class="statline">
-          <div><span>Role</span><strong>Project Intern</strong></div>
-          <div><span>Stack</span><strong>CodeIgniter · PHP · MySQL</strong></div>
-          <div><span>Focus</span><strong>Inventory · Sales</strong></div>
-        </div>
-      </div>
-      <div class="hero__avatar card">
-        <div class="avatar__orb avatar__orb--photo" style="--avatar-url: url('assets/images/logo/logoptmandirijayatop.png'); background-image: url('assets/images/logo/logoptmandirijayatop.png');">
-          <img src="assets/images/logo/logoptmandirijayatop.png" alt="Logo PT Mandiri Jaya Top" loading="lazy" />
-        </div>
-        <div class="avatar__lines"></div>
-        <div class="avatar__badge">Case</div>
-        <div class="avatar__label">PROJECT: MJT</div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="panel__header">
-        <p class="eyebrow">Overview</p>
-        <h2>Goals & Outcomes</h2>
-        <p class="lede">Menangani stok, transaksi, dan laporan penjualan sederhana dengan alur kerja yang mudah diikuti.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <h3>Objectives</h3>
-          <ul class="tags">
-            <li>CRUD inventory</li>
-            <li>Laporan penjualan</li>
-            <li>Role permission dasar</li>
+    <section class="mjt-section reveal">
+      <h2>🎯 <?= __('mjt_goals_title') ?></h2>
+      <p class="mjt-lead">
+        <?= __('mjt_goals_desc') ?>
+      </p>
+      
+      <div class="mjt-cards">
+        <article class="mjt-card">
+          <h3><?= __('mjt_system') ?></h3>
+          <ul>
+            <li><?= __('mjt_sys_1') ?></li>
+            <li><?= __('mjt_sys_2') ?></li>
+            <li><?= __('mjt_sys_3') ?></li>
           </ul>
         </article>
-        <article class="card">
-          <h3>Outcomes</h3>
-          <ul class="tags">
-            <li>Operasional terbantu</li>
-            <li>Proses terdokumentasi</li>
-            <li>Transfer knowledge</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Highlights</h3>
-          <ul class="tags">
-            <li>CodeIgniter MVC</li>
-            <li>MySQL schema</li>
-            <li>UI sederhana</li>
+        <article class="mjt-card">
+          <h3><?= __('mjt_collab') ?></h3>
+          <ul>
+            <li><?= __('mjt_col_1') ?></li>
+            <li><?= __('mjt_col_2') ?></li>
+            <li><?= __('mjt_col_3') ?></li>
           </ul>
         </article>
       </div>
     </section>
 
-    <section class="panel panel--alt">
-      <div class="panel__header">
-        <p class="eyebrow">Gallery</p>
-        <h2>Screens & Flows</h2>
-        <p class="lede">Cuplikan layar: inventory, transaksi, dan laporan penjualan.</p>
-      </div>
-      <div class="grid">
-        <div class="card" style="overflow:hidden">
-          <img src="assets/images/menus/ptmandirijayatop.png" alt="PT Mandiri Jaya Top screen 1" loading="lazy" style="width:100%;height:auto;display:block" />
-        </div>
-        <div class="card" style="overflow:hidden">
-          <img src="assets/images/menus/ptmandirijayatop2.png" alt="PT Mandiri Jaya Top screen 2" loading="lazy" style="width:100%;height:auto;display:block" />
-        </div>
-        <div class="card" style="overflow:hidden">
-          <img src="assets/images/menus/ptmandirijayatop3.png" alt="PT Mandiri Jaya Top screen 3" loading="lazy" style="width:100%;height:auto;display:block" />
-        </div>
+    <section class="mjt-section reveal">
+      <p class="gallery-label">📸 <?= __('gallery_label') ?></p>
+      <div class="mjt-gallery">
+        <a href="assets/images/menus/ptmandirijayatop.png" target="_blank" rel="noopener">
+          <img src="assets/images/menus/ptmandirijayatop.png" alt="Mandiri Jaya Top Screenshot 1" loading="lazy">
+        </a>
+        <a href="assets/images/menus/ptmandirijayatop2.png" target="_blank" rel="noopener">
+          <img src="assets/images/menus/ptmandirijayatop2.png" alt="Mandiri Jaya Top Screenshot 2" loading="lazy">
+        </a>
+        <a href="assets/images/menus/ptmandirijayatop3.png" target="_blank" rel="noopener">
+          <img src="assets/images/menus/ptmandirijayatop3.png" alt="Mandiri Jaya Top Screenshot 3" loading="lazy">
+        </a>
+        <a href="assets/images/menus/ptmandirijayatop4.png" target="_blank" rel="noopener">
+          <img src="assets/images/menus/ptmandirijayatop4.png" alt="Mandiri Jaya Top Screenshot 4" loading="lazy">
+        </a>
       </div>
     </section>
-  </main>
 
-  <div class="cursor"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
-  <script src="assets/js/script.js"></script>
-  <script src="assets/js/mobile-nav.js"></script>
-  <script src="assets/js/hud.js"></script>
-</body>
-</html>
+  </div>
+</main>
+<?php include 'includes/footer.php'; ?>

@@ -1,151 +1,180 @@
-<?php ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project • Web & SEO @ Bosgil Akademi</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css" />
-</head>
-<body>
-  <div class="space-bg">
-    <div class="nebula nebula-1"></div>
-    <div class="nebula nebula-2"></div>
-    <div class="planet"></div>
-  </div>
-  <canvas id="starfield"></canvas>
+<?php
+$pageTitle = 'Web & SEO @ Bosgil Akademi — Gamal Musthofa';
+include 'includes/header.php';
+?>
+<style>
+  /* ── Akademi Detail Page Extras ── */
+  .akademi-section {
+    margin-bottom: 48px;
+  }
+  .akademi-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .akademi-lead {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 75ch;
+    margin-bottom: 24px;
+  }
+  .akademi-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .akademi-card {
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+  }
+  .akademi-card h3 {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    margin-bottom: 12px;
+  }
+  .akademi-card ul {
+    display: grid;
+    gap: 10px;
+  }
+  .akademi-card li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .akademi-card li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+  }
+  
+  .gallery-label {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .gallery-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+  }
+  .akademi-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .akademi-gallery a {
+    display: block;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s var(--ease-out);
+  }
+  .akademi-gallery a:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+  }
+  .akademi-gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s var(--ease-out);
+  }
+  .akademi-gallery a:hover img {
+    transform: scale(1.05);
+  }
+</style>
 
-  <header class="hud">
-    <div class="brand">
-      <div class="brand__icon">◉</div>
+<main class="detail-page">
+  <div class="container">
+    <a class="back-link" href="index.php#work"><?= __('back_to_work') ?></a>
+
+    <header class="detail-hero">
       <div>
-        <div class="brand__title">Gam's Space</div>
-        <div class="brand__subtitle">PROJECT.MISSION</div>
+        <p class="eyebrow"><span class="eyebrow__num">Case Study</span> Sep 2023 — Des 2023</p>
+        <h1><?= __('akademi_page_title') ?></h1>
+        <p class="detail-lead">
+          <?= __('akademi_hero_lead') ?>
+        </p>
+        <ul class="hero__meta">
+          <li><span><?= __('meta_role') ?></span><strong>Web Developer & SEO</strong></li>
+          <li><span><?= __('meta_stack') ?></span><strong>WordPress · SEO Optimization</strong></li>
+          <li><span><?= __('meta_team') ?></span><strong>2 Programmer</strong></li>
+          <li><span><?= __('meta_period') ?></span><strong>Sep 2023 — Des 2023</strong></li>
+        </ul>
       </div>
-    </div>
-    <button class="nav__toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="nav__toggle-line"></span>
-      <span class="nav__toggle-line"></span>
-      <span class="nav__toggle-line"></span>
-    </button>
-    <nav class="nav" id="primary-nav">
-      <a class="nav__btn" href="index.php#hero">Home</a>
-      <a class="nav__btn" href="index.php#quests">Quests</a>
-      <a class="nav__btn" href="index.php#skills">Skills</a>
-      <a class="nav__btn" href="index.php#timeline">Log</a>
-      <a class="nav__btn" href="index.php#contact">Portal</a>
-    </nav>
-    <div class="status status--compact">
-      <button class="status__pill" aria-expanded="false" aria-haspopup="true" aria-controls="status-dropdown">
-        <span class="status__level">Lv <strong id="lvl">07</strong></span>
-        <span class="status__dot"></span>
-        <span class="status__xp">XP <span id="xp-perc">86%</span></span>
-        <span class="status__dot"></span>
-        <span class="status__energy">EN <span id="en-perc">74%</span></span>
-      </button>
-      <div class="status__dropdown" id="status-dropdown" hidden>
-        <div class="status__item">
-          <span>Level</span>
-          <strong id="lvl-readonly">07</strong>
-        </div>
-        <div class="status__item">
-          <span>XP</span>
-          <div class="bar"><span id="xp-bar"></span></div>
-        </div>
-        <div class="status__item">
-          <span>Energy</span>
-          <div class="bar bar--alt"><span id="energy-bar"></span></div>
-        </div>
+      <div class="detail-hero__img">
+        <img src="assets/images/logo/Logobosgil.png" alt="Logo Bosgil Akademi" loading="lazy">
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="panel panel--hero">
-      <div class="grid-bg"></div>
-      <div class="hero__content card">
-        <p class="eyebrow">Case Study</p>
-        <h1>Web & SEO <span class="accent">@ Bosgil Akademi</span></h1>
-        <p class="lede">Website WordPress, optimasi SEO, dan konten akademi. Landing produk + optimasi performa.</p>
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="index.php#quests">← Back to Quests</a>
-          <a class="btn btn--ghost" href="index.php#contact">Contact</a>
-        </div>
-        <div class="statline">
-          <div><span>Role</span><strong>Web/SEO</strong></div>
-          <div><span>Stack</span><strong>WordPress · SEO · Cloud</strong></div>
-          <div><span>Focus</span><strong>Visibility · Content</strong></div>
-        </div>
-      </div>
-      <div class="hero__avatar card">
-        <div class="avatar__orb"></div>
-        <div class="avatar__lines"></div>
-        <div class="avatar__badge">Case</div>
-        <div class="avatar__label">PROJECT: BOSGIL SEO</div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="panel__header">
-        <p class="eyebrow">Overview</p>
-        <h2>Goals & Outcomes</h2>
-        <p class="lede">Peningkatan visibilitas, struktur konten, dan kecepatan.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <h3>Objectives</h3>
-          <ul class="tags">
-            <li>Struktur konten</li>
-            <li>SEO on-page</li>
-            <li>Integrasi landing</li>
+    <section class="akademi-section reveal">
+      <h2>🎯 <?= __('akademi_goals_title') ?></h2>
+      <p class="akademi-lead">
+        <?= __('akademi_goals_desc') ?>
+      </p>
+      
+      <div class="akademi-cards">
+        <article class="akademi-card">
+          <h3><?= __('akademi_dev_focus') ?></h3>
+          <ul>
+            <li><?= __('akademi_dev_1') ?></li>
+            <li><?= __('akademi_dev_2') ?></li>
+            <li><?= __('akademi_dev_3') ?></li>
           </ul>
         </article>
-        <article class="card">
-          <h3>Outcomes</h3>
-          <ul class="tags">
-            <li>CTR & engagement naik</li>
-            <li>Organik traffic</li>
-            <li>Landing siap iklan</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Highlights</h3>
-          <ul class="tags">
-            <li>Optimasi performa</li>
-            <li>Schema & meta</li>
-            <li>Konten evergreen</li>
+        <article class="akademi-card">
+          <h3><?= __('akademi_seo') ?></h3>
+          <ul>
+            <li><?= __('akademi_seo_1') ?></li>
+            <li><?= __('akademi_seo_2') ?></li>
+            <li><?= __('akademi_seo_3') ?></li>
           </ul>
         </article>
       </div>
     </section>
 
-    <section class="panel panel--alt">
-      <div class="panel__header">
-        <p class="eyebrow">Gallery</p>
-        <h2>Screens & Flows</h2>
-        <p class="lede">Placeholder screens — siap diganti tangkapan layar aktual.</p>
-      </div>
-      <div class="grid">
-        <div class="card" style="overflow:hidden">
-          <img src="assets/images/menus/bosgilakademi.png" alt="Bosgil Akademi screen 1" loading="lazy" style="width:100%;height:auto;display:block" />
-        </div>
-        <div class="card" style="overflow:hidden">
-          <img src="assets/images/menus/bosgilakademi_2.png" alt="Bosgil Akademi screen 2" loading="lazy" style="width:100%;height:auto;display:block" />
-        </div>
-        <div class="card" style="overflow:hidden">
-          <img src="assets/images/menus/bosgilakademi_3.png" alt="Bosgil Akademi screen 3" loading="lazy" style="width:100%;height:auto;display:block" />
-        </div>
+    <section class="akademi-section reveal">
+      <p class="gallery-label">📸 <?= __('gallery_label') ?></p>
+      <div class="akademi-gallery">
+        <a href="assets/images/menus/bosgilakademi/BA 1.jpg" target="_blank" rel="noopener">
+          <img src="assets/images/menus/bosgilakademi/BA 1.jpg" alt="Bosgil Akademi Web 1" loading="lazy">
+        </a>
+        <a href="assets/images/menus/bosgilakademi/BA 2.png" target="_blank" rel="noopener">
+          <img src="assets/images/menus/bosgilakademi/BA 2.png" alt="Bosgil Akademi Web 2" loading="lazy">
+        </a>
+        <a href="assets/images/menus/bosgilakademi/BA 3.png" target="_blank" rel="noopener">
+          <img src="assets/images/menus/bosgilakademi/BA 3.png" alt="Bosgil Akademi Web 3" loading="lazy">
+        </a>
+        <a href="assets/images/menus/bosgilakademi/BA 4.png" target="_blank" rel="noopener">
+          <img src="assets/images/menus/bosgilakademi/BA 4.png" alt="Bosgil Akademi Web 4" loading="lazy">
+        </a>
+        <a href="assets/images/menus/bosgilakademi/BA 5.png" target="_blank" rel="noopener">
+          <img src="assets/images/menus/bosgilakademi/BA 5.png" alt="Bosgil Akademi Web 5" loading="lazy">
+        </a>
       </div>
     </section>
-  </main>
 
-  <div class="cursor"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
-  <script src="assets/js/script.js"></script>
-  <script src="assets/js/mobile-nav.js"></script>
-  <script src="assets/js/hud.js"></script>
-</body>
-</html>
+  </div>
+</main>
+<?php include 'includes/footer.php'; ?>

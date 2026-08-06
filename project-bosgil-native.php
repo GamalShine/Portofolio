@@ -1,153 +1,66 @@
-<?php ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project • Android/React Native @ Bosgil</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css" />
-</head>
-<body>
-  <div class="space-bg">
-    <div class="nebula nebula-1"></div>
-    <div class="nebula nebula-2"></div>
-    <div class="planet"></div>
-  </div>
-  <canvas id="starfield"></canvas>
+<?php
+$pageTitle = 'Order Management System @ CV Makanan Segala Acara — Gamal Musthofa';
+include 'includes/header.php';
+?>
+<main class="detail-page">
+  <div class="container">
+    <a class="back-link" href="index.php#work"><?= __('back_to_work') ?></a>
 
-  <header class="hud">
-    <div class="brand">
-      <div class="brand__icon">◉</div>
+    <header class="detail-hero">
       <div>
-        <div class="brand__title">Gam's Space</div>
-        <div class="brand__subtitle">PROJECT.MISSION</div>
+        <p class="eyebrow"><span class="eyebrow__num">Case Study</span> Mar 2024 — Sep 2024</p>
+        <h1><?= __('order_page_title') ?></h1>
+        <p class="detail-lead"><?= __('order_hero_lead') ?></p>
+        <ul class="hero__meta">
+          <li><span><?= __('meta_role') ?></span><strong>Mobile Developer</strong></li>
+          <li><span><?= __('meta_stack') ?></span><strong>React Native · Android · MySQL</strong></li>
+          <li><span><?= __('meta_period') ?></span><strong>Mar 2024 — Sep 2024</strong></li>
+        </ul>
       </div>
-    </div>
-    <button class="nav__toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="nav__toggle-line"></span>
-      <span class="nav__toggle-line"></span>
-      <span class="nav__toggle-line"></span>
-    </button>
-    <nav class="nav" id="primary-nav">
-      <a class="nav__btn" href="index.php#hero">Home</a>
-      <a class="nav__btn" href="index.php#quests">Quests</a>
-      <a class="nav__btn" href="index.php#skills">Skills</a>
-      <a class="nav__btn" href="index.php#timeline">Log</a>
-      <a class="nav__btn" href="index.php#contact">Portal</a>
-    </nav>
-    <div class="status status--compact">
-      <button class="status__pill" aria-expanded="false" aria-haspopup="true" aria-controls="status-dropdown">
-        <span class="status__level">Lv <strong id="lvl">07</strong></span>
-        <span class="status__dot"></span>
-        <span class="status__xp">XP <span id="xp-perc">86%</span></span>
-        <span class="status__dot"></span>
-        <span class="status__energy">EN <span id="en-perc">74%</span></span>
-      </button>
-      <div class="status__dropdown" id="status-dropdown" hidden>
-        <div class="status__item">
-          <span>Level</span>
-          <strong id="lvl-readonly">07</strong>
-        </div>
-        <div class="status__item">
-          <span>XP</span>
-          <div class="bar"><span id="xp-bar"></span></div>
-        </div>
-        <div class="status__item">
-          <span>Energy</span>
-          <div class="bar bar--alt"><span id="energy-bar"></span></div>
-        </div>
+      <div class="detail-hero__img">
+        <img src="assets/images/logo/Logobosgil.png" alt="Logo CV Makanan Segala Acara" loading="lazy">
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="panel panel--hero">
-      <div class="grid-bg"></div>
-      <div class="hero__content card">
-        <p class="eyebrow">Case Study</p>
-        <h1>Android/React Native <span class="accent">@ Bosgil</span></h1>
-        <p class="lede">Aplikasi admin pesanan multi cabang. React Native + integrasi MySQL. Fokus ke kemudahan operasional dan pelatihan admin.</p>
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="index.php#quests">← Back to Quests</a>
-          <a class="btn btn--ghost" href="index.php#contact">Contact</a>
-        </div>
-        <div class="statline">
-          <div><span>Role</span><strong>Mobile Developer</strong></div>
-          <div><span>Stack</span><strong>React Native · Android · MySQL</strong></div>
-          <div><span>Focus</span><strong>Operational · Training</strong></div>
-        </div>
-      </div>
-      <div class="hero__avatar card">
-        <div class="avatar__orb avatar__orb--photo" style="--avatar-url: url('assets/images/logo/Logobosgil.png'); background-image: url('assets/images/logo/Logobosgil.png');">
-          <img src="assets/images/logo/Logobosgil.png" alt="Logo Bosgil" loading="lazy" />
-        </div>
-        <div class="avatar__lines"></div>
-        <div class="avatar__badge">Case</div>
-        <div class="avatar__label">PROJECT: BOSGIL RN</div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="panel__header">
-        <p class="eyebrow">Overview</p>
-        <h2>Goals & Outcomes</h2>
-        <p class="lede">Optimasi alur pesanan, sinkronisasi data, dan pelatihan admin.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <h3>Objectives</h3>
-          <ul class="tags">
-            <li>CRUD pesanan real-time</li>
-            <li>Sinkronisasi cabang</li>
-            <li>Notifikasi status</li>
+    <section class="detail-section">
+      <h2><?= __('order_goals_title') ?></h2>
+      <p><?= __('order_goals_desc') ?></p>
+      <div class="detail-cards">
+        <article class="detail-card">
+          <h3><?= __('order_objectives') ?></h3>
+          <ul>
+            <li><?= __('order_obj_1') ?></li>
+            <li><?= __('order_obj_2') ?></li>
+            <li><?= __('order_obj_3') ?></li>
           </ul>
         </article>
-        <article class="card">
-          <h3>Outcomes</h3>
-          <ul class="tags">
-            <li>Waktu proses lebih cepat</li>
-            <li>Training onsite/online</li>
-            <li>Dokumentasi admin</li>
+        <article class="detail-card">
+          <h3><?= __('order_outcomes') ?></h3>
+          <ul>
+            <li><?= __('order_out_1') ?></li>
+            <li><?= __('order_out_2') ?></li>
+            <li><?= __('order_out_3') ?></li>
           </ul>
         </article>
-        <article class="card">
-          <h3>Highlights</h3>
-          <ul class="tags">
-            <li>React Native UI</li>
-            <li>API terintegrasi</li>
-            <li>Offline-first (opsional)</li>
+        <article class="detail-card">
+          <h3><?= __('order_highlights') ?></h3>
+          <ul>
+            <li><?= __('order_hi_1') ?></li>
+            <li><?= __('order_hi_2') ?></li>
+            <li><?= __('order_hi_3') ?></li>
           </ul>
         </article>
       </div>
     </section>
 
-    <section class="panel panel--alt">
-      <div class="panel__header">
-        <p class="eyebrow">Gallery</p>
-        <h2>Screens & Flows</h2>
-        <p class="lede">Placeholder screens — siap diganti tangkapan layar aktual.</p>
-      </div>
-      <div class="grid">
-        <div class="card" style="overflow:hidden">
-          <img src="assets/images/menus/pesanbosgil.png" alt="Pesan Bosgil screen 1" loading="lazy" style="width:100%;height:auto;display:block" />
-        </div>
-        <div class="card" style="overflow:hidden">
-          <img src="assets/images/menus/pesanbosgil2.png" alt="Pesan Bosgil screen 2" loading="lazy" style="width:100%;height:auto;display:block" />
-        </div>
-        <div class="card" style="overflow:hidden">
-          <img src="assets/images/menus/pesanbosgil3.png" alt="Pesan Bosgil screen 3" loading="lazy" style="width:100%;height:auto;display:block" />
-        </div>
+    <section class="detail-section">
+      <h2><?= __('order_screens_title') ?></h2>
+      <div class="detail-gallery">
+        <img src="assets/images/menus/pesanbosgil.png" alt="Order Management screen 1" loading="lazy">
+        <img src="assets/images/menus/pesanbosgil2.png" alt="Order Management screen 2" loading="lazy">
+        <img src="assets/images/menus/pesanbosgil3.png" alt="Order Management screen 3" loading="lazy">
       </div>
     </section>
-  </main>
-
-  <div class="cursor"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
-  <script src="assets/js/script.js"></script>
-  <script src="assets/js/mobile-nav.js"></script>
-  <script src="assets/js/hud.js"></script>
-</body>
-</html>
+  </div>
+</main>
+<?php include 'includes/footer.php'; ?>

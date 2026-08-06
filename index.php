@@ -1,336 +1,546 @@
 <?php
-// Neon Quest portfolio - PHP entry. Feel free to extend with backend logic.
+require_once __DIR__ . '/includes/i18n.php';
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="<?= $current_lang ?>">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gam's Space</title>
+  <title>Gamal Musthofa — Fullstack & Mobile Engineer</title>
+  <meta name="description"
+    content="Portfolio Gamal Musthofa — System, Web & Mobile Developer. Next.js, Laravel, React Native, PostgreSQL.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <!-- Favicon: SVG + PNG fallback (with cache-busting) -->
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
-  <link rel="mask-icon" href="assets/favicon.svg?v=2" color="#00c8ff">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo/logotokped.png?v=2">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/logotokped.png?v=2">
-  <link rel="shortcut icon" type="image/png" href="assets/images/logo/logotokped.png?v=2">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo/logotokped.png?v=2">
-  <!-- Absolute path fallback (Laragon) and generic rel for broader support -->
-  <link rel="icon" href="/Portofolio/assets/images/logo/logotokped.png?v=2">
-  <link rel="icon" href="assets/images/logo/logotokped.png?v=2">
-  <meta name="theme-color" content="#0a0e27">
+  <link rel="stylesheet" href="assets/css/styles.css?v=<?= time() ?>">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=4">
+  <meta name="theme-color" content="#f8fafc" id="theme-color-meta">
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.getElementById('theme-color-meta').setAttribute('content', '#090b10');
+    }
+  </script>
 </head>
-<body>
-  <div class="space-bg">
-    <div class="nebula nebula-1"></div>
-    <div class="nebula nebula-2"></div>
-    <div class="planet"></div>
-  </div>
-  <canvas id="starfield"></canvas>
 
-  <header class="hud">
-      <div class="brand">
-        <div class="brand__icon">◉</div>
-        <div>
-          <div class="brand__title">Gam's Space</div>
-          <div class="brand__subtitle">PORTFOLIO.MISSION</div>
-        </div>
-      </div>
-    <button class="nav__toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="nav__toggle-line"></span>
-      <span class="nav__toggle-line"></span>
-      <span class="nav__toggle-line"></span>
-    </button>
-    <nav class="nav" id="primary-nav">
-      <a class="nav__btn active" href="index.php">Home</a>
-      <a class="nav__btn" href="pages/quests.php">Quests</a>
-      <a class="nav__btn" href="pages/skills.php">Skills</a>
-      <a class="nav__btn" href="pages/log.php">Log</a>
-      <a class="nav__btn" href="pages/portal.php">Portal</a>
-    </nav>
-    <div class="status status--compact">
-      <button class="status__pill" aria-expanded="false" aria-haspopup="true" aria-controls="status-dropdown">
-        <span class="status__level">Lv <strong id="lvl">07</strong></span>
-        <span class="status__dot"></span>
-        <span class="status__xp">XP <span id="xp-perc">86%</span></span>
-        <span class="status__dot"></span>
-        <span class="status__energy">EN <span id="en-perc">74%</span></span>
-      </button>
-      <div class="status__dropdown" id="status-dropdown" hidden>
-        <div class="status__item">
-          <span>Level</span>
-          <strong id="lvl-readonly">07</strong>
-        </div>
-        <div class="status__item">
-          <span>XP</span>
-          <div class="bar"><span id="xp-bar"></span></div>
-        </div>
-        <div class="status__item">
-          <span>Energy</span>
-          <div class="bar bar--alt"><span id="energy-bar"></span></div>
-        </div>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header__inner">
+      <a class="logo" href="#home">GM<span>.</span></a>
+      <nav class="site-nav" id="primary-nav">
+        <a href="#work"><?= __('nav_work') ?></a>
+        <a href="#about"><?= __('nav_about') ?></a>
+        <a href="#experience"><?= __('nav_experience') ?></a>
+        <a class="nav-cta" href="#contact"><?= __('nav_contact') ?></a>
+      </nav>
+      <div class="header-actions">
+        <?php
+          $switch_to = $current_lang === 'id' ? 'en' : 'id';
+          $switch_label = $current_lang === 'id' ? 'EN' : 'ID';
+        ?>
+        <a href="?lang=<?= $switch_to ?>" class="lang-toggle" aria-label="Switch language to <?= strtoupper($switch_to) ?>" title="Switch to <?= strtoupper($switch_to) ?>">
+          <?= $switch_label ?>
+        </a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <i class="ph ph-sun sun-icon" style="display: none;"></i>
+          <i class="ph ph-moon moon-icon"></i>
+        </button>
+        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Buka menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
-    <section id="hero" class="panel panel--hero">
-      <div class="grid-bg"></div>
-      <div class="hero__content card">
-        <p class="eyebrow">Interactive Portfolio</p>
-        <h1>Hi, I’m Gamal Musthofa.<br><span class="accent">System · Web · Mobile</span> developer.</h1>
-        <p class="lede">Fullstack/system developer yang terbiasa Next.js/React, Laravel/PHP, WordPress/SEO, React Native, serta backend PostgreSQL/MySQL. Pernah pegang QA & helpdesk, jadi peka pada kualitas dan kebutuhan user.</p>
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="pages/quests.php">Start Quest</a>
-          <a class="btn btn--ghost" href="pages/portal.php">Open Portal</a>
-        </div>
-        <div class="statline">
-          <div><span>Current Mission</span><strong>Information Systems</strong></div>
-          <div><span>Focus</span><strong>Next.js · Laravel · React Native</strong></div>
-          <div><span>Location</span><strong>Tangerang · Remote/Hybrid</strong></div>
-        </div>
-      </div>
-      <div class="hero__avatar card">
-        <div class="avatar__orb avatar__orb--photo" style="--avatar-url: url('assets/Foto GML.jpg'); background-image: url('assets/Foto GML.jpg');">
-          <img src="assets/Foto GML.jpg" alt="Foto Profil Gamal Musthofa" loading="lazy" />
-        </div>
-        <div class="avatar__lines"></div>
-        <div class="avatar__badge">ONLINE</div>
-        <div class="avatar__label">PILOT: GAMAL</div>
-      </div>
-    </section>
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero__layout">
+          <div class="hero__copy">
+            <div class="hero__status">
+              <span class="status-dot"></span>
+              <span><?= __('hero_status') ?></span>
+            </div>
 
-    <section id="quests" class="panel">
-      <div class="panel__header">
-        <p class="eyebrow">Quests</p>
-        <h2>Playable Projects</h2>
-        <p class="lede">Cuplikan pekerjaan utama: sistem informasi pemerintah, mobile React Native, web korporat/WordPress, hingga SEO.</p>
-      </div>
-      <div class="grid">
-        <article class="card quest">
-          <div class="card__header">
-            <span class="pill">System Dev</span>
-            <span class="pill" style="background:var(--glow); color:#001016;">Ongoing</span>
-            <span class="ping"></span>
-          </div>
-          <h3>Information System @ BSN</h3>
-          <p>Fokus pengembangan:
-            <br>1) Arsitektur modul & integrasi pelayanan
-            <br>2) Sistem pengelolaan data SNI & big data
-          </p>
-          <div class="tags"><span>Next.js</span><span>Laravel</span><span>PostgreSQL</span></div>
-          <a class="btn btn--tiny" href="project-bsn.php">Detail</a>
-        </article>
-        <article class="card quest">
-          <div class="card__header">
-            <span class="pill">QA</span>
-            <span class="pill" style="background:var(--glow); color:#001016;">Ongoing</span>
-            <span class="ping"></span>
-          </div>
-          <h3>SISPK Testing @ BSN</h3>
-          <p>Validasi model bisnis, triage bug/error, dan masukan UI/UX.
-            Dokumentasi tersedia (screenshot ringkas).
-          </p>
-          <div class="tags"><span>Testing</span><span>UI/UX</span><span>Model Bisnis</span></div>
-          <a class="btn btn--tiny" href="project-bsn.php#sispk">Detail</a>
-        </article>
-        <article class="card quest">
-          <div class="card__header">
-            <span class="pill">Mobile</span>
-            <span class="ping"></span>
-          </div>
-          <h3>Android/React Native @ Bosgil</h3>
-          <p>Aplikasi Android/React Native untuk manajemen pesanan restoran Nasi Mandhi Bosgil (multi cabang). Training admin, integrasi MySQL, pengelolaan melalui Google Meet.</p>
-          <div class="tags"><span>React Native</span><span>Android</span><span>MySQL</span></div>
-          <a class="btn btn--tiny" href="project-bosgil-native.php">Detail</a>
-        </article>
-        
-        <article class="card quest">
-          <div class="card__header">
-            <span class="pill">Corp Web</span>
-            <span class="ping"></span>
-          </div>
-          <h3>Company Site @ Legal Handal</h3>
-          <p>Bangun company profile untuk PT Legal Handal Sejahtera (WordPress). Koordinasi kebutuhan, rilis cepat, remote.</p>
-          <div class="tags"><span>WordPress</span><span>Web</span><span>Client Work</span></div>
-          <a class="btn btn--tiny" href="project-legal-handal.php">Detail</a>
-        </article>
-      </div>
-      <div class="panel__footer" style="margin-top:16px; text-align:center;">
-        <a class="btn btn--ghost" href="pages/quests.php">Selengkapnya →</a>
-      </div>
-    </section>
+            <h1 class="hero__name">
+              <span class="hero__name-gradient">Gamal</span><br>
+              <span class="hero__name-accent">Musthofa</span>
+            </h1>
 
-    <section id="skills" class="panel panel--alt">
-      <div class="panel__header">
-        <p class="eyebrow">Inventory</p>
-        <h2>Skills & Power-ups</h2>
-        <p class="lede">Tooling utama dari proyek-proyek terakhir.</p>
-      </div>
-      <div class="skills">
-        <div class="skill card">
-          <div class="skill__label">
-            <span>Frontend Web</span>
-            <div class="pill">S-tier</div>
+            <div class="hero__role">
+              <span class="role-decorator">//</span> <?= __('hero_role') ?>
+            </div>
+
+            <p class="hero__bio">
+              <?= __('hero_bio') ?>
+            </p>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#work">
+                <?= __('hero_cta') ?> <i class="ph ph-arrow-down" style="margin-left: 4px;"></i>
+              </a>
+              <button class="email-copy-btn" data-email="gamalmusthofa@gmail.com" title="Klik untuk menyalin email">
+                <span class="copy-icon">
+                  <i class="ph ph-copy"></i>
+                </span>
+                <span class="copy-text">gamalmusthofa@gmail.com</span>
+              </button>
+            </div>
           </div>
-          <div class="bars"><span data-value="92"></span></div>
-          <p>React, Next.js, TypeScript/JavaScript, integrasi API, styling modern.</p>
+
+          <!-- Hero Avatar Frame -->
+          <figure class="hero__visual">
+            <div class="hero__badge-floating hero__badge-floating--1">
+              <span class="hero__badge-icon"><i class="ph ph-atom"></i></span>
+              <span>React & React Native</span>
+            </div>
+            <div class="hero__badge-floating hero__badge-floating--2">
+              <span class="hero__badge-icon"><i class="ph ph-database"></i></span>
+              <span>Laravel & PostgreSQL</span>
+            </div>
+            <div class="hero__visual-frame spotlight-card">
+              <img src="assets/Foto GML.jpg" alt="Gamal Musthofa" width="480" height="560" loading="eager">
+            </div>
+          </figure>
         </div>
-        <div class="skill card">
-          <div class="skill__label">
-            <span>Mobile</span>
-            <div class="pill">S-tier</div>
-          </div>
-          <div class="bars"><span data-value="95"></span></div>
-          <p>React Native & Android, integrasi RESTful API, training admin, deployment.</p>
-        </div>
-        <div class="skill card">
-          <div class="skill__label">
-            <span>Backend & Data</span>
-            <div class="pill">A-tier</div>
-          </div>
-          <div class="bars"><span data-value="86"></span></div>
-          <p>Laravel/PHP, Node.js, PostgreSQL, MySQL, Firebase; auth, CRUD, SEO, cloud dasar.</p>
+
+        <!-- Social Links Grid Below Hero Layout -->
+        <div class="hero-social">
+          <p class="hero-social__label"><?= __('hero_contact_via') ?></p>
+          <ul class="hero-social__stack">
+            <li>
+              <a class="social-card social-card--linkedin" href="https://www.linkedin.com/in/gamalmusthofa/"
+                target="_blank" rel="noopener noreferrer">
+                <span class="social-card__icon" aria-hidden="true">
+                  <i class="ph-fill ph-linkedin-logo"></i>
+                </span>
+                <span class="social-card__body">
+                  <span class="social-card__name">LinkedIn</span>
+                  <span class="social-card__url">linkedin.com/in/gamalmusthofa</span>
+                </span>
+                <span class="social-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+              </a>
+            </li>
+            <li>
+              <a class="social-card social-card--gmail" href="mailto:gamalmusthofa@gmail.com" target="_blank"
+                rel="noopener noreferrer">
+                <span class="social-card__icon" aria-hidden="true">
+                  <i class="ph-fill ph-envelope-simple"></i>
+                </span>
+                <span class="social-card__body">
+                  <span class="social-card__name">Gmail</span>
+                  <span class="social-card__url">gamalmusthofa@gmail.com</span>
+                </span>
+                <span class="social-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+              </a>
+            </li>
+            <li>
+              <a class="social-card social-card--instagram" href="https://instagram.com/gamalmust" target="_blank"
+                rel="noopener noreferrer">
+                <span class="social-card__icon" aria-hidden="true">
+                  <i class="ph-fill ph-instagram-logo"></i>
+                </span>
+                <span class="social-card__body">
+                  <span class="social-card__name">Instagram</span>
+                  <span class="social-card__url">instagram.com/gamalmust</span>
+                </span>
+                <span class="social-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section id="timeline" class="panel">
-      <div class="panel__header">
-        <p class="eyebrow">Quest Log</p>
-        <h2>Milestones</h2>
-        <p class="lede">Urutan pengalaman yang paling relevan.</p>
+    <!-- SELECTED WORK SECTION -->
+    <section id="work" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span class="eyebrow__num">01</span> <?= __('work_eyebrow') ?></p>
+          <h2><?= __('work_title') ?></h2>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-tabs reveal">
+          <button class="filter-btn is-active" data-filter="all"><?= __('filter_all') ?></button>
+          <button class="filter-btn" data-filter="fullstack"><?= __('filter_fullstack') ?></button>
+          <button class="filter-btn" data-filter="mobile"><?= __('filter_mobile') ?></button>
+          <button class="filter-btn" data-filter="qa"><?= __('filter_qa') ?></button>
+        </div>
+
+        <div class="work-list">
+          <!-- Item 1: BSN -->
+          <!-- Item 1: BSN -->
+          <article class="work-item spotlight-card reveal" data-category="fullstack web">
+            <div class="work-item__media">
+              <img src="assets/images/logo/logobsn.png" alt="BSN Logo" loading="lazy">
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__meta">
+                <span>Nov 2025 — Mei 2026</span>
+              </div>
+              <h3><?= __('proj_bsn_title') ?></h3>
+              <p><?= __('proj_bsn_desc') ?></p>
+              <ul class="tags">
+                <li>Next.js</li>
+                <li>Laravel</li>
+                <li>PostgreSQL</li>
+              </ul>
+              <a class="text-link" href="project-bsn.php"><?= __('link_case_study') ?> <i class="ph ph-arrow-up-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Item 2: CV Makanan ERP -->
+          <article class="work-item spotlight-card reveal" data-category="mobile fullstack">
+            <div class="work-item__media">
+              <img src="assets/images/logo/Logobosgil.png" alt="CV Makanan Segala Acara Logo" loading="lazy">
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__meta">
+                <span>Jun — Nov 2025</span>
+              </div>
+              <h3><?= __('proj_erp_title') ?></h3>
+              <p><?= __('proj_erp_desc') ?></p>
+              <ul class="tags">
+                <li>React Native</li>
+                <li>React</li>
+                <li>Express.js</li>
+                <li>MySQL</li>
+              </ul>
+              <a class="text-link" href="project-bosgil-dashboard.php"><?= __('link_case_study') ?> <i class="ph ph-arrow-up-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Item 3: CV Makanan Order Management -->
+          <article class="work-item spotlight-card reveal" data-category="mobile">
+            <div class="work-item__media">
+              <img src="assets/images/logo/Logobosgil.png" alt="CV Makanan Segala Acara Logo" loading="lazy">
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__meta">
+                <span>Mar — Sep 2024</span>
+              </div>
+              <h3><?= __('proj_order_title') ?></h3>
+              <p><?= __('proj_order_desc') ?></p>
+              <ul class="tags">
+                <li>React Native</li>
+                <li>Android</li>
+                <li>MySQL</li>
+              </ul>
+              <a class="text-link" href="project-bosgil-native.php"><?= __('link_case_study') ?> <i class="ph ph-arrow-up-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Item 4: Tokopedia QA -->
+          <article class="work-item spotlight-card reveal" data-category="qa">
+            <div class="work-item__media">
+              <img src="assets/images/logo/logotokped.png" alt="Tokopedia Logo" loading="lazy">
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__meta">
+                <span>Nov — Des 2023</span>
+              </div>
+              <h3><?= __('proj_qa_title') ?></h3>
+              <p><?= __('proj_qa_desc') ?></p>
+              <ul class="tags">
+                <li>Automation Testing</li>
+                <li>Test Case</li>
+                <li>QA</li>
+              </ul>
+              <a class="text-link" href="project-tokopedia-qa.php"><?= __('link_qa_detail') ?> <i class="ph ph-arrow-up-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Item 5: Bosgil Akademi -->
+          <article class="work-item spotlight-card reveal" data-category="web">
+            <div class="work-item__media">
+              <img src="assets/images/logo/Logobosgil.png" alt="Bosgil Akademi" loading="lazy">
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__meta">
+                <span>Sep — Des 2023</span>
+              </div>
+              <h3><?= __('proj_akademi_title') ?></h3>
+              <p><?= __('proj_akademi_desc') ?></p>
+              <ul class="tags">
+                <li>WordPress</li>
+                <li>Google SEO</li>
+                <li>Team Collaboration</li>
+              </ul>
+              <a class="text-link" href="project-bosgil-akademi.php"><?= __('link_case_study') ?> <i class="ph ph-arrow-up-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Item 6: Legal Handal -->
+          <article class="work-item spotlight-card reveal" data-category="web">
+            <div class="work-item__media">
+              <img src="assets/images/logo/logolegalhandal.png" alt="Legal Handal Logo" loading="lazy">
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__meta">
+                <span>Mei — Jul 2022</span>
+              </div>
+              <h3><?= __('proj_legal_title') ?></h3>
+              <p><?= __('proj_legal_desc') ?></p>
+              <ul class="tags">
+                <li>WordPress</li>
+                <li>UI Design</li>
+                <li>Corporate</li>
+              </ul>
+              <a class="text-link" href="project-legal-handal.php"><?= __('link_case_study') ?> <i class="ph ph-arrow-up-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Item 7: Mandiri Jaya Top -->
+          <article class="work-item spotlight-card reveal" data-category="fullstack web">
+            <div class="work-item__media">
+              <img src="assets/images/logo/logoptmandirijayatop.png" alt="Mandiri Jaya Top Logo" loading="lazy">
+            </div>
+            <div class="work-item__body">
+              <div class="work-item__meta">
+                <span>Jan — Mei 2022</span>
+              </div>
+              <h3><?= __('proj_ecommerce_title') ?></h3>
+              <p><?= __('proj_ecommerce_desc') ?></p>
+              <ul class="tags">
+                <li>CodeIgniter</li>
+                <li>MySQL</li>
+                <li>Teamwork</li>
+              </ul>
+              <a class="text-link" href="project-mandiri-jaya-top.php"><?= __('link_case_study') ?> <i class="ph ph-arrow-up-right"></i></a>
+            </div>
+          </article>
+        </div>
       </div>
-      <div class="timeline">
-        <div class="timeline__item card">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <h4>Dashboard Bosgil Group — Mobile & Web</h4>
-            <p>React Native (Android/iOS) + Express.js + PostgreSQL, 3 role: User, Admin, Owner. Server di VPS.</p>
-            <span class="pill">Sep 2025 — Des 2025</span>
-          </div>
+    </section>
+
+    <!-- ABOUT & TECH MATRIX (BENTO GRID) -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span class="eyebrow__num">02</span> <?= __('about_eyebrow') ?></p>
         </div>
-        <div class="timeline__item card">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <h4>Ongoing Project — In Development</h4>
-            <p>Fase perancangan dan implementasi awal; iterasi cepat bersama stakeholder.</p>
-            <span class="pill">Nov 2025 — Sekarang</span>
+
+        <div class="bento-grid">
+          <!-- Tile 1: About Copy -->
+          <div class="bento-card spotlight-card bento-col-8 reveal">
+            <h3><?= __('about_philosophy_title') ?></h3>
+            <p><?= __('about_philosophy_1') ?></p>
+            <p><?= __('about_philosophy_2') ?></p>
           </div>
-        </div>
-        <div class="timeline__item card">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <h4>Information System Developer — BSN</h4>
-            <p>Next.js/React + Laravel + PostgreSQL untuk sistem informasi instansi pemerintah.</p>
-            <span class="pill">Nov 2023 — Sekarang</span>
+
+          <!-- Tile 2: Metrics Stats -->
+          <div class="bento-card spotlight-card bento-col-4 reveal">
+            <h3><?= __('about_metrics_title') ?></h3>
+            <div class="metrics-grid">
+              <div class="metric-item">
+                <div class="metric-number">3+</div>
+                <div class="metric-label"><?= __('metric_years') ?></div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-number">7+</div>
+                <div class="metric-label"><?= __('metric_projects') ?></div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-number">100%</div>
+                <div class="metric-label"><?= __('metric_delivery') ?></div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="timeline__item card">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <h4>Android/React Native Developer — Bosgil</h4>
-            <p>Aplikasi Android/React Native untuk admin pesanan multi cabang; MySQL.</p>
-            <span class="pill">Mar 2024 — Sep 2024</span>
-          </div>
-        </div>
-        <div class="timeline__item card">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <h4>Freelance Web Developer — Bosgil Akademi</h4>
-            <p>WordPress site, SEO, cloud; konten bisnis dan aktivitas akademi.</p>
-            <span class="pill">Nov 2023 — Des 2023</span>
-          </div>
-        </div>
-        <div class="timeline__item card">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <h4>Web Developer — PT Legal Handal</h4>
-            <p>Company profile WordPress, koordinasi kebutuhan, rilis cepat.</p>
-            <span class="pill">Jun 2022 — Jul 2022</span>
-          </div>
-        </div>
-        <div class="timeline__item card">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <h4>Project Intern — PT Mandiri Jaya Top</h4>
-            <p>Inventory & sales web (CodeIgniter + MySQL), tim kecil, on-site.</p>
-            <span class="pill">Apr 2022 — Mei 2022</span>
-          </div>
-        </div>
-        <div class="timeline__item card">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <h4>Help Desk — PT PLN (Persero)</h4>
-            <p>Menangani laporan user ke engineering melalui website PLN.</p>
-            <span class="pill">Jan 2024 — Mar 2024</span>
-          </div>
-        </div>
-        <div class="timeline__item card">
-          <div class="timeline__dot"></div>
-          <div class="timeline__content">
-            <h4>Quality Assurance Tester — Tokopedia</h4>
-            <p>Test scenario & test case login Tokopedia (manual testing).</p>
-            <span class="pill">Nov 2023 — Des 2023</span>
+
+          <!-- Tile 3: Tech Stack Chips Matrix -->
+          <div class="bento-card spotlight-card bento-col-12 reveal">
+            <h3><?= __('about_tech_title') ?></h3>
+
+            <div class="skill-matrix" style="margin-top: 24px;">
+              <div>
+                <p class="skill-category__title"><?= __('tech_frontend') ?></p>
+                <div class="skill-chips">
+                  <span class="skill-chip"><i class="ph ph-atom"></i> React.js</span>
+                  <span class="skill-chip"><i class="ph ph-triangle"></i> Next.js</span>
+                  <span class="skill-chip"><i class="ph ph-code"></i> TypeScript</span>
+                  <span class="skill-chip"><i class="ph ph-brackets-curly"></i> JavaScript (ES6+)</span>
+                  <span class="skill-chip"><i class="ph ph-paint-brush-broad"></i> Modern CSS3 & Tailwind</span>
+                  <span class="skill-chip"><i class="ph ph-browsers"></i> HTML5 / Responsive</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="skill-category__title"><?= __('tech_mobile') ?></p>
+                <div class="skill-chips">
+                  <span class="skill-chip"><i class="ph ph-device-mobile"></i> React Native</span>
+                  <span class="skill-chip"><i class="ph ph-android-logo"></i> Android Studio</span>
+                  <span class="skill-chip"><i class="ph ph-plugs-connected"></i> REST API Integration</span>
+                  <span class="skill-chip"><i class="ph ph-rocket-launch"></i> App Deployment</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="skill-category__title"><?= __('tech_backend') ?></p>
+                <div class="skill-chips">
+                  <span class="skill-chip"><i class="ph ph-cube"></i> Laravel</span>
+                  <span class="skill-chip"><i class="ph ph-code-block"></i> PHP 8+</span>
+                  <span class="skill-chip"><i class="ph ph-hexagon"></i> Node.js / Express</span>
+                  <span class="skill-chip"><i class="ph ph-database"></i> PostgreSQL</span>
+                  <span class="skill-chip"><i class="ph ph-hard-drive"></i> MySQL</span>
+                  <span class="skill-chip"><i class="ph ph-flame"></i> Firebase</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="skill-category__title"><?= __('tech_devops') ?></p>
+                <div class="skill-chips">
+                  <span class="skill-chip"><i class="ph ph-hard-drives"></i> VPS / Nginx Deployment</span>
+                  <span class="skill-chip"><i class="ph ph-bug"></i> Manual QA Testing</span>
+                  <span class="skill-chip"><i class="ph ph-book-open-text"></i> Technical Documentation</span>
+                  <span class="skill-chip"><i class="ph ph-github-logo"></i> Git / GitHub</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span class="eyebrow__num">03</span> <?= __('exp_eyebrow') ?></p>
+          <h2><?= __('exp_title') ?></h2>
+        </div>
 
-    <section id="contact" class="panel panel--alt">
-      <div class="panel__header">
-        <p class="eyebrow">Portal</p>
-        <h2>Ready to Play?</h2>
-        <p class="lede">Drop a message to unlock the next co-op mission.</p>
+        <div class="exp-timeline">
+          <div class="exp-card spotlight-card reveal">
+            <div class="exp-time">Nov 2025 — Mei 2026</div>
+            <div class="exp-content">
+              <h3>Information System Developer</h3>
+              <div class="exp-company">Badan Standardisasi Nasional (BSN)</div>
+              <p class="exp-desc"><?= __('exp_bsn_desc') ?></p>
+            </div>
+          </div>
+
+          <div class="exp-card spotlight-card reveal">
+            <div class="exp-time">Jun 2025 — Nov 2025</div>
+            <div class="exp-content">
+              <h3>Fullstack Developer & DevOps</h3>
+              <div class="exp-company">CV Makanan Segala Acara</div>
+              <p class="exp-desc"><?= __('exp_erp_desc') ?></p>
+            </div>
+          </div>
+
+          <div class="exp-card spotlight-card reveal">
+            <div class="exp-time">Mar 2024 — Sep 2024</div>
+            <div class="exp-content">
+              <h3>Android / React Native Developer</h3>
+              <div class="exp-company">CV Makanan Segala Acara</div>
+              <p class="exp-desc"><?= __('exp_order_desc') ?></p>
+            </div>
+          </div>
+
+          <div class="exp-card spotlight-card reveal">
+            <div class="exp-time">Jan 2024 — Mar 2024</div>
+            <div class="exp-content">
+              <h3>Help Desk Specialist</h3>
+              <div class="exp-company">PT PLN (Persero)</div>
+              <p class="exp-desc"><?= __('exp_pln_desc') ?></p>
+            </div>
+          </div>
+
+          <div class="exp-card spotlight-card reveal">
+            <div class="exp-time">Nov 2023 — Des 2023</div>
+            <div class="exp-content">
+              <h3>QA Automation Tester (Project)</h3>
+              <div class="exp-company">Personal / Portfolio Project</div>
+              <p class="exp-desc"><?= __('exp_qa_desc') ?></p>
+            </div>
+          </div>
+
+          <div class="exp-card spotlight-card reveal">
+            <div class="exp-time">Mei 2022 — Jul 2022</div>
+            <div class="exp-content">
+              <h3>Web Developer</h3>
+              <div class="exp-company">PT Legal Handal Sejahtera</div>
+              <p class="exp-desc"><?= __('exp_legal_desc') ?></p>
+            </div>
+          </div>
+
+          <div class="exp-card spotlight-card reveal">
+            <div class="exp-time">Jan 2022 — Mei 2022</div>
+            <div class="exp-content">
+              <h3>Project Intern Developer</h3>
+              <div class="exp-company">PT Mandiri Jaya Top</div>
+              <p class="exp-desc"><?= __('exp_intern_desc') ?></p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="contact card">
-        <form method="post">
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <div class="container contact-wrap">
+        <div class="contact-intro reveal">
+          <p class="eyebrow"><span class="eyebrow__num">04</span> <?= __('contact_eyebrow') ?></p>
+          <h2><?= __('contact_title') ?></h2>
+          <p><?= __('contact_desc') ?></p>
+
+          <div class="contact-facts">
+            <div class="contact-fact-item">
+              <span class="contact-fact-label">Timezone</span>
+              <span class="contact-fact-val">WIB (UTC+7)</span>
+            </div>
+            <div class="contact-fact-item">
+              <span class="contact-fact-label"><?= __('contact_loc_label') ?></span>
+              <span class="contact-fact-val"><?= __('contact_loc_val') ?></span>
+            </div>
+            <div class="contact-fact-item">
+              <span class="contact-fact-label"><?= __('contact_avail_label') ?></span>
+              <span class="contact-fact-val" style="color: var(--accent-emerald);"><?= __('contact_avail_val') ?></span>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form spotlight-card reveal" method="post">
           <div class="field">
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Player name">
+            <label for="name"><?= __('form_name_label') ?></label>
+            <input type="text" id="name" name="name" placeholder="<?= __('form_name_ph') ?>" required>
           </div>
           <div class="field">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="contact@domain.com">
+            <label for="email"><?= __('form_email_label') ?></label>
+            <input type="email" id="email" name="email" placeholder="<?= __('form_email_ph') ?>" required>
           </div>
           <div class="field">
-            <label>Message</label>
-            <textarea rows="4" name="message" placeholder="Your mission brief..."></textarea>
+            <label for="message"><?= __('form_msg_label') ?></label>
+            <textarea id="message" name="message" rows="5"
+              placeholder="<?= __('form_msg_ph') ?>" required></textarea>
           </div>
-          <button type="submit" class="btn btn--primary">Send Transmission</button>
-        </form>
-        <div class="contact__meta">
-          <div class="meta__line">
-            <span>Response Time</span>
-            <strong>Fast</strong>
-          </div>
-          <div class="meta__line">
-            <span>Timezone</span>
-            <strong>UTC+7</strong>
-          </div>
-          <div class="meta__line">
-            <span>Status</span>
-            <strong>Available</strong>
-          </div>
+          <button type="submit" class="btn btn--primary btn--full"><?= __('form_submit') ?> <i class="ph ph-paper-plane-right" style="margin-left: 6px;"></i></button>
+
           <?php if ($_SERVER["REQUEST_METHOD"] === "POST"): ?>
-            <div class="meta__line" style="color: var(--glow); border-color: rgba(70,255,232,0.3);">
-              <span>Transmission received</span>
-              <strong>Thanks, <?= htmlspecialchars($_POST["name"] ?? "Player") ?>!</strong>
+            <div
+              style="padding: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--accent-emerald); border-radius: var(--radius-sm); color: var(--badge-live-text); font-weight: 600; text-align: center;">
+              Terima kasih, <?= htmlspecialchars($_POST["name"] ?? "Anda") ?>! Pesan Anda telah diterima.
             </div>
           <?php endif; ?>
-        </div>
+        </form>
       </div>
     </section>
   </main>
 
-  <div class="cursor"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <p>© <?= date("Y") ?> <?= __('footer_text') ?></p>
+      <a href="#home" style="display: inline-flex; align-items: center; gap: 4px;"><?= __('footer_back_top') ?> <i class="ph ph-arrow-up"></i></a>
+    </div>
+  </footer>
+
   <script src="assets/js/script.js"></script>
   <script src="assets/js/mobile-nav.js"></script>
-  <script src="assets/js/hud.js"></script>
 </body>
-</html>
 
+</html>
