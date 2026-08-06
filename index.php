@@ -505,6 +505,172 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ajax_contact'])) {
       </div>
     </section>
 
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="section">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow__num">05</span> <?= __('edu_eyebrow') ?></p>
+        <h2><?= __('edu_title') ?></h2>
+        <p class="section-sub"><?= __('edu_desc') ?></p>
+
+        <div class="edu-grid">
+          <!-- Universitas Pamulang -->
+          <div class="edu-card spotlight-card reveal">
+            <div class="edu-card__header">
+              <div class="edu-card__icon">
+                <i class="ph ph-graduation-cap"></i>
+              </div>
+              <div class="edu-card__badge"><?= __('edu_degree_s1') ?></div>
+            </div>
+            <div class="edu-card__body">
+              <h3><?= __('edu_unpam_name') ?></h3>
+              <p class="edu-card__location"><i class="ph ph-map-pin"></i> <?= __('edu_unpam_loc') ?></p>
+              <p class="edu-card__major"><?= __('edu_unpam_major') ?></p>
+              <div class="edu-card__meta">
+                <span class="edu-meta-item"><i class="ph ph-star"></i> <?= __('edu_unpam_gpa') ?></span>
+                <span class="edu-meta-item"><i class="ph ph-calendar-blank"></i> <?= __('edu_unpam_period') ?></span>
+              </div>
+            </div>
+            <div class="edu-card__footer">
+              <a href="education.php?school=unpam" class="btn btn--ghost edu-card__cta">
+                <?= __('edu_view_transcript') ?> <i class="ph ph-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- STIKOM Bali -->
+          <div class="edu-card spotlight-card reveal">
+            <div class="edu-card__header">
+              <div class="edu-card__icon edu-card__icon--exchange">
+                <i class="ph ph-student"></i>
+              </div>
+              <div class="edu-card__badge edu-card__badge--exchange"><?= __('edu_degree_exchange') ?></div>
+            </div>
+            <div class="edu-card__body">
+              <h3><?= __('edu_stikom_name') ?></h3>
+              <p class="edu-card__location"><i class="ph ph-map-pin"></i> <?= __('edu_stikom_loc') ?></p>
+              <p class="edu-card__major"><?= __('edu_stikom_major') ?></p>
+              <div class="edu-card__meta">
+                <span class="edu-meta-item"><i class="ph ph-star"></i> <?= __('edu_stikom_gpa') ?></span>
+                <span class="edu-meta-item"><i class="ph ph-calendar-blank"></i> <?= __('edu_stikom_period') ?></span>
+              </div>
+            </div>
+            <div class="edu-card__footer">
+              <a href="education.php?school=stikom" class="btn btn--ghost edu-card__cta">
+                <?= __('edu_view_transcript') ?> <i class="ph ph-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section id="certifications" class="section">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow__num">06</span> <?= __('cert_eyebrow') ?></p>
+        <h2><?= __('cert_title') ?></h2>
+        <p class="section-sub"><?= __('cert_desc') ?></p>
+
+        <div class="cert-grid">
+          <!-- BNSP -->
+          <div class="cert-card spotlight-card reveal">
+            <div class="cert-card__icon-wrap cert-card__icon--bnsp">
+              <i class="ph ph-seal-check"></i>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__year">2025</span>
+              <h3><?= __('cert_bnsp_title') ?></h3>
+              <p><?= __('cert_bnsp_issuer') ?></p>
+            </div>
+            <a href="certifications.php?cert=bnsp" class="cert-card__link" title="Lihat Sertifikat">
+              <i class="ph ph-arrow-square-out"></i>
+            </a>
+          </div>
+
+          <!-- MagangHub Kemenaker -->
+          <div class="cert-card spotlight-card reveal">
+            <div class="cert-card__icon-wrap cert-card__icon--magang">
+              <i class="ph ph-briefcase"></i>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__year">2025</span>
+              <h3><?= __('cert_maganghub_title') ?></h3>
+              <p><?= __('cert_maganghub_issuer') ?></p>
+            </div>
+            <a href="certifications.php?cert=maganghub" class="cert-card__link" title="Lihat Sertifikat">
+              <i class="ph ph-arrow-square-out"></i>
+            </a>
+          </div>
+
+          <!-- Digital Literacy -->
+          <div class="cert-card spotlight-card reveal">
+            <div class="cert-card__icon-wrap cert-card__icon--digital">
+              <i class="ph ph-monitor"></i>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__year">2026</span>
+              <h3><?= __('cert_digital_title') ?></h3>
+              <p><?= __('cert_digital_issuer') ?></p>
+            </div>
+            <a href="certifications.php?cert=digital" class="cert-card__link" title="Lihat Sertifikat">
+              <i class="ph ph-arrow-square-out"></i>
+            </a>
+          </div>
+
+          <!-- PMM Bali -->
+          <div class="cert-card spotlight-card reveal">
+            <div class="cert-card__icon-wrap cert-card__icon--pmm">
+              <i class="ph ph-globe"></i>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__year">2022</span>
+              <h3><?= __('cert_pmm_title') ?></h3>
+              <p><?= __('cert_pmm_issuer') ?></p>
+            </div>
+            <a href="certifications.php?cert=pmm" class="cert-card__link" title="Lihat Sertifikat">
+              <i class="ph ph-arrow-square-out"></i>
+            </a>
+          </div>
+
+          <!-- React -->
+          <div class="cert-card spotlight-card reveal">
+            <div class="cert-card__icon-wrap cert-card__icon--react">
+              <i class="ph ph-code"></i>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__year">2022</span>
+              <h3><?= __('cert_react_title') ?></h3>
+              <p><?= __('cert_react_issuer') ?></p>
+            </div>
+            <a href="certifications.php?cert=react" class="cert-card__link" title="Lihat Sertifikat">
+              <i class="ph ph-arrow-square-out"></i>
+            </a>
+          </div>
+
+          <!-- Mobile Workshop -->
+          <div class="cert-card spotlight-card reveal">
+            <div class="cert-card__icon-wrap cert-card__icon--mobile">
+              <i class="ph ph-device-mobile-camera"></i>
+            </div>
+            <div class="cert-card__body">
+              <span class="cert-card__year">2022</span>
+              <h3><?= __('cert_mobile_title') ?></h3>
+              <p><?= __('cert_mobile_issuer') ?></p>
+            </div>
+            <a href="certifications.php?cert=mobile" class="cert-card__link" title="Lihat Sertifikat">
+              <i class="ph ph-arrow-square-out"></i>
+            </a>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top: 40px;">
+          <a href="certifications.php" class="btn btn--ghost">
+            <?= __('cert_view_all') ?> <i class="ph ph-certificate"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT SECTION -->
     <section id="contact" class="section">
       <div class="container contact-wrap">
